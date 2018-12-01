@@ -226,8 +226,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _customersInHierarchy: {fileID: 1913574011283030}
-  _customerPrefab: {fileID: 1546921984850774, guid: 2c6fdecff56584da3ad8378eaf43f3ef,
-    type: 2}
+  _customerPrefabs:
+  - {fileID: 1266723178929520, guid: 7d44f1660bc00044eacdf7c96494ece0, type: 2}
+  - {fileID: 1612104528987474, guid: cd0eb06afb6281a49bf0c1a0df3311c4, type: 2}
+  - {fileID: 1267075271910216, guid: b3ecfec8e0483b441b3e6d84e0ca23cb, type: 2}
+  - {fileID: 1693776206636864, guid: bb0b7fc516fa7f64186f7462905e567d, type: 2}
   customerSpawnLocations:
   - {fileID: 0}
   - {fileID: 0}

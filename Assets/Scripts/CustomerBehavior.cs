@@ -11,6 +11,7 @@ public abstract class CustomerBehavior
     protected Attitude startingAttitude;
     protected Attitude currentAttitude;
     public Color Color;
+    public GameObject Prefab;
 }
 
 public class NeutralCustomer: CustomerBehavior

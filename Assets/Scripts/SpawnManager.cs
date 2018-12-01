@@ -12,7 +12,7 @@ public class SpawnManager : MonoBehaviour {
     //Prefab references
     //Customers
     public GameObject _customersInHierarchy;
-    public GameObject _customerPrefab;
+    public GameObject[] _customerPrefabs = { null, null, null, null };
     public GameObject[] customerSpawnLocations = { null, null, null, null };
     //Food
     public GameObject _foodInHierarchy;
@@ -26,7 +26,7 @@ public class SpawnManager : MonoBehaviour {
         Instance = this;
         _inventory.SetChairSlotNum(customerSpawnLocations.Length);
         _inventory.SetFoodSlotNum(foodSpawnLocations.Length);
-	}
+    }
 
     private void Start()
     {
@@ -77,12 +77,12 @@ public class SpawnManager : MonoBehaviour {
     {
         if (_inventory.ChairSlotOpen())
         {
-            GameObject newCustomerObj = Instantiate(_customerPrefab);
-            Customer newCustomer = newCustomerObj.GetComponent<Customer>();
+            GameObject newCustomerObj = Instantiate(_customerPrefabs[UnityEngine.Random.Range(0, _customerPrefabs.Length)]);
+            Customer newCustomer = newCustomerObj.AddComponent<Customer>();
             newCustomer.AssignRandomBehavior();
             newCustomerObj.transform.parent = _customersInHierarchy.transform;
             newCustomerObj.transform.name = newCustomer.Behavior.GetType().ToString();
-            newCustomerObj.GetComponent<MeshRenderer>().material.color = newCustomer.Behavior.Color;
+           // newCustomerObj.GetComponent<MeshRenderer>().material.color = newCustomer.Behavior.Color;
 
             int slot = _inventory.TakeChairSlot(newCustomerObj);
             newCustomerObj.transform.position = customerSpawnLocations[slot].transform.position;
