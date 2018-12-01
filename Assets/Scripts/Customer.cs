@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Customer : MonoBehaviour {
 
+    private static int _id = 0;
     public CustomerBehavior Behavior { get { return _behavior; } set { _behavior = value; } }
 
     // Use this for initialization
@@ -20,6 +21,22 @@ public class Customer : MonoBehaviour {
 
     private void AssignRandomBehavior()
     {
-        _behavior = new NeutralCustomer();
+        if (TempIsEven(_id++))
+        {
+            _behavior = new NeutralCustomer();
+        }
+        else
+        {
+            _behavior = new AngryCustomer();
+        }
+    }
+
+
+    private bool TempIsEven(int num)
+    {
+        if (num % 2 == 0)
+            return true;
+        else
+            return false;
     }
 }

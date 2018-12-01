@@ -15,7 +15,7 @@ public class SpawnManager : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 
-       // SpawnInitialCustomers();
+        SpawnInitialCustomers();
 	}
 	
 	// Update is called once per frame
@@ -25,10 +25,15 @@ public class SpawnManager : MonoBehaviour {
 
     private void SpawnInitialCustomers()
     {
-        GameObject newCustomerObj = Instantiate(_customerPrefab);
-        Customer newCustomer = newCustomerObj.GetComponent<Customer>();
-        newCustomerObj.transform.parent = _customersInHierarchy.transform;
-        newCustomerObj.transform.name = newCustomer.Behavior.GetType().ToString();
-        _customers.Add(newCustomer);
+        for (int i = 0; i < customerSpawnLocations.Length; i++)
+        {
+            GameObject newCustomerObj = Instantiate(_customerPrefab);
+            Customer newCustomer = newCustomerObj.GetComponent<Customer>();
+            newCustomerObj.transform.parent = _customersInHierarchy.transform;
+            newCustomerObj.transform.name = newCustomer.Behavior.GetType().ToString() + " " + i;
+            newCustomerObj.GetComponent<MeshRenderer>().material.color = newCustomer.Behavior.Color;
+            newCustomerObj.transform.position = customerSpawnLocations[i].transform.position;
+            _customers.Add(newCustomer);
+        }
     }
 }
