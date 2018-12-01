@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b9f05caccaeb48146ae995df3ed431ab
+guid: c4e96c35cd46f534592ecc07b608e110
 PluginImporter:
   serializedVersion: 1
   iconMap: {}
@@ -25,14 +25,14 @@ PluginImporter:
         Exclude SamsungTV: 0
         Exclude Tizen: 0
         Exclude WebGL: 0
-        Exclude Win: 1
-        Exclude Win64: 0
+        Exclude Win: 0
+        Exclude Win64: 1
         Exclude WindowsStoreApps: 0
         Exclude iOS: 0
     Editor:
       enabled: 1
       settings:
-        CPU: x86_64
+        CPU: x86
         DefaultValueInitialized: true
         OS: AnyOS
     Linux:
@@ -70,13 +70,13 @@ PluginImporter:
       enabled: 1
       settings: {}
     Win:
-      enabled: 0
-      settings:
-        CPU: None
-    Win64:
       enabled: 1
       settings:
         CPU: AnyCPU
+    Win64:
+      enabled: 0
+      settings:
+        CPU: None
     WindowsStoreApps:
       enabled: 1
       settings:
