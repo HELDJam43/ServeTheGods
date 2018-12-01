@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23336397899338490}
   - component: {fileID: 64608630566401738}
   - component: {fileID: 54555346674777130}
-  - component: {fileID: 114126748045648666}
+  - component: {fileID: 114269887851975170}
   m_Layer: 0
   m_Name: meat
   m_TagString: Untagged
@@ -115,7 +115,7 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: ea67002794397b14e862a47a9723ea14, type: 3}
---- !u!114 &114126748045648666
+--- !u!114 &114269887851975170
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,7 +123,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1441367189205574}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5a3aed3af6cebe4b9abe89c1c56a667, type: 3}
+  m_Script: {fileID: 11500000, guid: c4e2537d909dbee49b3f492ce784dcb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rBody: {fileID: 0}
+  food: {fileID: 11400000, guid: 3c7c9c6e42b43384c81b26d0a00ebea6, type: 2}

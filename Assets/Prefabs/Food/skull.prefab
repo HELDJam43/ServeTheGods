@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23182794696545954}
   - component: {fileID: 54460323909605850}
   - component: {fileID: 64958922432288132}
-  - component: {fileID: 114915338164468032}
+  - component: {fileID: 114415375403844980}
   m_Layer: 0
   m_Name: skull
   m_TagString: Untagged
@@ -115,7 +115,7 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 5c5130b87676fca428291fd93b86ea67, type: 3}
---- !u!114 &114915338164468032
+--- !u!114 &114415375403844980
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,7 +123,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1260015570022284}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5a3aed3af6cebe4b9abe89c1c56a667, type: 3}
+  m_Script: {fileID: 11500000, guid: c4e2537d909dbee49b3f492ce784dcb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rBody: {fileID: 0}
+  food: {fileID: 11400000, guid: f0686dc944e987446be3ecf85c446fc2, type: 2}
