@@ -1,6 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
+public class MyIntEvent : UnityEvent<GameObject>
+{
+}
 
 public class SpawnManager : MonoBehaviour {
 
@@ -14,14 +19,30 @@ public class SpawnManager : MonoBehaviour {
     public GameObject[] _foodPrefabs = { null, null, null, null, null, null };
     public GameObject[] foodSpawnLocations = { null, null, null };
 
-	// Use this for initialization
-	void Awake () {
+    public static SpawnManager Instance;
+    public MyIntEvent DespawnEvent;
+    // Use this for initialization
+    void Awake () {
+        Instance = this;
         _inventory.SetChairSlotNum(customerSpawnLocations.Length);
         _inventory.SetFoodSlotNum(foodSpawnLocations.Length);
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void Start()
+    {
+        if (DespawnEvent == null)
+            DespawnEvent = new MyIntEvent();
+
+        DespawnEvent.AddListener(DespawnSomething);
+    }
+
+    void ScoreAdd(int num)
+    {
+        Debug.Log(num);
+    }
+
+    // Update is called once per frame
+    void Update () {
         SpawnInitialCustomers();
         SpawnInitialFood();
 
@@ -32,6 +53,18 @@ public class SpawnManager : MonoBehaviour {
     }
 
     private SpawnInventory _inventory = new SpawnInventory();
+
+    private void DespawnSomething(GameObject go)
+    {
+        if (go.GetComponent<Customer>() == null)
+        {
+            _inventory.FreeFoodSlot(go);
+        }
+        else
+        {
+            _inventory.FreeChairSlot(go);
+        }
+    }
 
     private void DespawnEverything()
     {

@@ -71,6 +71,8 @@ public class PickupHandler : MonoBehaviour
         currentObject.transform.parent = (transform);
         currentObject.transform.position = heldLocation.position;
         currentObject.transform.localEulerAngles = Vector3.zero;
+
+        SpawnManager.Instance.DespawnEvent.Invoke(currentObject.gameObject);
     }
     void Drop(Transform pos)
     {

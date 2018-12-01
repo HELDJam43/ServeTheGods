@@ -69,6 +69,24 @@ public class SpawnInventory
         return slot;
     }
 
+    public void FreeFoodSlot(GameObject go)
+    {
+        int slot = -1;
+        foreach (KeyValuePair<int, GameObject> objs in _foodSlot)
+        {
+            if (objs.Value == go)
+            {
+                slot = objs.Key;
+
+            }
+        }
+
+        if (slot != -1)
+        {
+            _foodSlot[slot] = null;
+        }
+    }
+
     public void SetChairSlotNum(int num)
     {
         for (int i = 0; i < num; i++)
@@ -89,6 +107,24 @@ public class SpawnInventory
             }
         }
         return false;
+    }
+
+    public void FreeChairSlot(GameObject go)
+    {
+        int slot = -1;
+        foreach (KeyValuePair<int, GameObject> objs in _chairSlot)
+        {
+            if (objs.Value == go)
+            {
+                slot = objs.Key;
+
+            }
+        }
+
+        if (slot != -1)
+        {
+            _chairSlot[slot] = null;
+        }
     }
 
     public int TakeChairSlot(GameObject chairGO)
