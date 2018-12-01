@@ -14,44 +14,57 @@ public class SpawnManager : MonoBehaviour {
     public GameObject[] _foodPrefabs = { null, null, null, null, null, null };
     public GameObject[] foodSpawnLocations = { null, null, null };
 
-
-    List<Customer> _customers = new List<Customer>();
-    List<GameObject> _food = new List<GameObject>();
-
 	// Use this for initialization
 	void Awake () {
-        SpawnInitialCustomers();
-        SpawnInitialFood();
+        _inventory.SetChairSlotNum(customerSpawnLocations.Length);
+        _inventory.SetFoodSlotNum(foodSpawnLocations.Length);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        SpawnInitialCustomers();
+        SpawnInitialFood();
+
+        if (Input.GetKeyUp(KeyCode.R))
+        {
+            DespawnEverything();
+        }
+    }
+
+    private SpawnInventory _inventory = new SpawnInventory();
+
+    private void DespawnEverything()
+    {
+        _inventory.FreeAllSlots();
+        _inventory.SetChairSlotNum(customerSpawnLocations.Length);
+        _inventory.SetFoodSlotNum(foodSpawnLocations.Length);
+    }
 
     private void SpawnInitialCustomers()
     {
-        for (int i = 0; i < customerSpawnLocations.Length; i++)
+        if (_inventory.ChairSlotOpen())
         {
             GameObject newCustomerObj = Instantiate(_customerPrefab);
             Customer newCustomer = newCustomerObj.GetComponent<Customer>();
             newCustomer.AssignRandomBehavior();
             newCustomerObj.transform.parent = _customersInHierarchy.transform;
-            newCustomerObj.transform.name = newCustomer.Behavior.GetType().ToString() + " " + i;
+            newCustomerObj.transform.name = newCustomer.Behavior.GetType().ToString();
             newCustomerObj.GetComponent<MeshRenderer>().material.color = newCustomer.Behavior.Color;
-            newCustomerObj.transform.position = customerSpawnLocations[i].transform.position;
-            _customers.Add(newCustomer);
+
+            int slot = _inventory.TakeChairSlot(newCustomerObj);
+            newCustomerObj.transform.position = customerSpawnLocations[slot].transform.position;
         }
     }
 
     private void SpawnInitialFood()
     {
-        for (int i = 0; i < foodSpawnLocations.Length; i++)
+        if (_inventory.FoodSlotOpen())
         {
             GameObject newFoodObj = Instantiate(_foodPrefabs[UnityEngine.Random.Range(0, _foodPrefabs.Length)]);
             newFoodObj.transform.parent = _foodInHierarchy.transform;
-            newFoodObj.transform.position = foodSpawnLocations[i].transform.position;
-            _food.Add(newFoodObj);
+
+            int slot = _inventory.TakeFoodSlot(newFoodObj);
+            newFoodObj.transform.position = foodSpawnLocations[slot].transform.position;
         }
     }
 }
