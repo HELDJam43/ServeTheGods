@@ -82,15 +82,13 @@ public class SpawnManager : MonoBehaviour {
             GameObject newCustomerObj = Instantiate(_customerPrefabs[UnityEngine.Random.Range(0, _customerPrefabs.Length)]);
             Customer newCustomer = newCustomerObj.AddComponent<Customer>();
             newCustomer.AssignRandomBehavior();
-            newCustomer.SetDesiredFood(FoodManager.GetRandomFood());
             newCustomerObj.transform.parent = _customersInHierarchy.transform;
             newCustomerObj.transform.name = newCustomer.Behavior.GetType().ToString();
-           // newCustomerObj.GetComponent<MeshRenderer>().material.color = newCustomer.Behavior.Color;
 
             int slot = _inventory.TakeChairSlot(newCustomerObj);
             newCustomerObj.transform.position = customerSpawnLocations[slot].transform.position;
 
-            SpawnOrderBubble(newCustomerObj);
+            newCustomer.SetDesiredFood(SpawnOrderBubble(newCustomerObj));
         }
     }
 
@@ -106,12 +104,14 @@ public class SpawnManager : MonoBehaviour {
         }
     }
 
-    private void SpawnOrderBubble(GameObject obj)
+    private Food SpawnOrderBubble(GameObject obj)
     {
         GameObject newOrderBubble = Instantiate(_orderPrefab, obj.transform, false);
         newOrderBubble.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y + 1, obj.transform.position.z);
 
         GameObject foodType = newOrderBubble.transform.Find("FoodType").gameObject;
-        foodType.GetComponentInChildren<MeshFilter>().sharedMesh = FoodManager.GetRandomFood().foodMesh;
+        Food selectedFood = FoodManager.GetRandomFood();
+        foodType.GetComponentInChildren<MeshFilter>().sharedMesh = selectedFood.foodMesh;
+        return selectedFood;
     }
 }
