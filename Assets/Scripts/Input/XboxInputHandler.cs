@@ -42,49 +42,30 @@ public class XboxInputHandler : InputHandler
         ActionSystem.RegisterAction(ActionSystem.PROCEEDTHROUGHDIALOGUE, Buttons.FIRE_0, GameStateManager.GameState.DIALOUGE);
         ActionSystem.RegisterAction(ActionSystem.INTERACT, Buttons.FIRE_2, GameStateManager.GameState.GAMEPLAY);
 
-        ActionSystem.RegisterAction(ActionSystem.MOVEAXIS, Axis.LEFT_HORIZONTAL, GameStateManager.GameState.GAMEPLAY);
-        ActionSystem.RegisterAction(ActionSystem.MOVEAXIS, Axis.DPAD_HORIZ, GameStateManager.GameState.GAMEPLAY);
+        ActionSystem.RegisterAction(ActionSystem.MOVEAXIS_X, Axis.LEFT_HORIZONTAL, GameStateManager.GameState.GAMEPLAY);
+        ActionSystem.RegisterAction(ActionSystem.MOVEAXIS_Y, Axis.LEFT_VERTICAL, GameStateManager.GameState.GAMEPLAY);
+
+        ActionSystem.RegisterAction(ActionSystem.MOVEAXIS_X, Axis.DPAD_VERTICAL, GameStateManager.GameState.GAMEPLAY);
+        ActionSystem.RegisterAction(ActionSystem.MOVEAXIS_Y, Axis.DPAD_VERTICAL, GameStateManager.GameState.GAMEPLAY);
+
+
         ActionSystem.RegisterAction(ActionSystem.CAMERAAXIS, Axis.LEFT_VERTICAL, GameStateManager.GameState.GAMEPLAY);
         ActionSystem.RegisterAction(ActionSystem.CAMERAAXIS, Axis.DPAD_VERTICAL, GameStateManager.GameState.GAMEPLAY);
-
-        ActionSystem.RegisterAction(ActionSystem.FALLTHROUGH, Axis.DPAD_VERTICAL, GameStateManager.GameState.GAMEPLAY);
-        ActionSystem.RegisterAction(ActionSystem.FALLTHROUGH, Axis.LEFT_VERTICAL, GameStateManager.GameState.GAMEPLAY);
 
         ActionSystem.RegisterAction(ActionSystem.JUMP, Buttons.FIRE_0, GameStateManager.GameState.GAMEPLAY);
         ActionSystem.RegisterAction(ActionSystem.STARTGAME, Buttons.FIRE_0, GameStateManager.GameState.STARTSCREEN);
         ActionSystem.RegisterAction(ActionSystem.PAUSE, Buttons.START, GameStateManager.GameState.GAMEPLAY, GameStateManager.GameState.PAUSE);
-        ActionSystem.RegisterAction(ActionSystem.SPELLBOOK, Buttons.SELECT, GameStateManager.GameState.GAMEPLAY, GameStateManager.GameState.PAUSE);
-        //ActionSystem.RegisterAction(ActionSystem.THROW, Buttons.FIRE_3);
-        ActionSystem.RegisterAction(ActionSystem.TOSS, Buttons.FIRE_2, GameStateManager.GameState.GAMEPLAY);
-        ActionSystem.RegisterAction(ActionSystem.ATTACK, Buttons.FIRE_1, GameStateManager.GameState.GAMEPLAY);
-        ActionSystem.RegisterAction(ActionSystem.ATTACKINITIATE, Buttons.FIRE_1, GameStateManager.GameState.GAMEPLAY);
         ActionSystem.RegisterAction(ActionSystem.RUN, Buttons.RIGHT_TRIGGER, GameStateManager.GameState.GAMEPLAY);
-
         ActionSystem.RegisterAction(ActionSystem.MENUHORZ, Axis.DPAD_HORIZ, GameStateManager.GameState.MENU, GameStateManager.GameState.PAUSE);
         ActionSystem.RegisterAction(ActionSystem.MENUVERT, Axis.DPAD_VERTICAL, GameStateManager.GameState.MENU, GameStateManager.GameState.PAUSE);
         ActionSystem.RegisterAction(ActionSystem.MENUHORZ, Axis.LEFT_HORIZONTAL, GameStateManager.GameState.MENU, GameStateManager.GameState.PAUSE);
         ActionSystem.RegisterAction(ActionSystem.MENUVERT, Axis.LEFT_VERTICAL, GameStateManager.GameState.MENU, GameStateManager.GameState.PAUSE);
-
         ActionSystem.RegisterAction(ActionSystem.MENUDPADDOWN, Buttons.DPAD_DOWN, GameStateManager.GameState.MENU, GameStateManager.GameState.PAUSE);
         ActionSystem.RegisterAction(ActionSystem.MENUDPADUP, Buttons.DPAD_UP, GameStateManager.GameState.MENU, GameStateManager.GameState.PAUSE);
         ActionSystem.RegisterAction(ActionSystem.MENUDPADLEFT, Buttons.DPAD_LEFT, GameStateManager.GameState.MENU, GameStateManager.GameState.PAUSE);
         ActionSystem.RegisterAction(ActionSystem.MENUDPADRIGHT, Buttons.DPAD_RIGHT, GameStateManager.GameState.MENU, GameStateManager.GameState.PAUSE);
-
-
         ActionSystem.RegisterAction(ActionSystem.MENUSELECT, Buttons.FIRE_0, GameStateManager.GameState.MENU, GameStateManager.GameState.PAUSE);
         ActionSystem.RegisterAction(ActionSystem.MENUQUIT, Buttons.FIRE_3, GameStateManager.GameState.MENU, GameStateManager.GameState.PAUSE);
-
-        ActionSystem.RegisterAction(ActionSystem.CLEARSWORDS, Buttons.LEFT_STICK, GameStateManager.GameState.GAMEPLAY);
-
-        ActionSystem.RegisterAction(ActionSystem.CASTINGHORZ, Axis.RIGHT_HORIZONTAL, GameStateManager.GameState.GAMEPLAY);
-        ActionSystem.RegisterAction(ActionSystem.CASTINGVERT, Axis.RIGHT_VERTICAL, GameStateManager.GameState.GAMEPLAY);
-
-        ActionSystem.RegisterAction(ActionSystem.COMBOEND, Buttons.FIRE_1, GameStateManager.GameState.GAMEPLAY);
-        ActionSystem.RegisterAction(ActionSystem.MENUTABLEFT, Buttons.LEFT_BUMPER, GameStateManager.GameState.MENU, GameStateManager.GameState.PAUSE);
-        ActionSystem.RegisterAction(ActionSystem.MENUTABRIGHT, Buttons.RIGHT_BUMPER, GameStateManager.GameState.MENU, GameStateManager.GameState.PAUSE);
-
-        ActionSystem.RegisterAction(ActionSystem.CYCLEINVENTORYLEFT, Buttons.LEFT_BUMPER, GameStateManager.GameState.GAMEPLAY);
-        ActionSystem.RegisterAction(ActionSystem.CYCLEINVENTORYRIGHT, Buttons.RIGHT_BUMPER, GameStateManager.GameState.GAMEPLAY);
     }
 
     protected override float AxisValue(Axis a)

@@ -283,51 +283,23 @@ public class PCInputHandler : InputHandler
          base.RegisterActions();
         ActionSystem.RegisterAction(ActionSystem.PROCEEDTHROUGHDIALOGUE, KeyCode.Space, GameStateManager.GameState.DIALOUGE);
         ActionSystem.RegisterAction(ActionSystem.PROCEEDTHROUGHDIALOGUE, KeyCode.Mouse0, GameStateManager.GameState.DIALOUGE);
-
         ActionSystem.RegisterAction(ActionSystem.INTERACT, KeyCode.Mouse1, GameStateManager.GameState.GAMEPLAY);
-        ActionSystem.RegisterAction(ActionSystem.TOSS, KeyCode.Mouse1, GameStateManager.GameState.GAMEPLAY);
-
         ActionSystem.RegisterAction(ActionSystem.INTERACT, KeyCode.Q, GameStateManager.GameState.GAMEPLAY);
-        ActionSystem.RegisterAction(ActionSystem.TOSS, KeyCode.Q, GameStateManager.GameState.GAMEPLAY);
 
-        ActionSystem.RegisterAction(ActionSystem.MOVEAXIS, Axis.LEFT_HORIZONTAL, GameStateManager.GameState.GAMEPLAY);
+        ActionSystem.RegisterAction(ActionSystem.MOVEAXIS_X, Axis.LEFT_HORIZONTAL, GameStateManager.GameState.GAMEPLAY);
+        ActionSystem.RegisterAction(ActionSystem.MOVEAXIS_Y, Axis.LEFT_VERTICAL, GameStateManager.GameState.GAMEPLAY);
+
 
         ActionSystem.RegisterAction(ActionSystem.CAMERAAXIS, Axis.LEFT_VERTICAL, GameStateManager.GameState.GAMEPLAY);
-
-        ActionSystem.RegisterAction(ActionSystem.FALLTHROUGH, Axis.LEFT_VERTICAL, GameStateManager.GameState.GAMEPLAY);
-
         ActionSystem.RegisterAction(ActionSystem.JUMP, KeyCode.Space, GameStateManager.GameState.GAMEPLAY);
         ActionSystem.RegisterAction(ActionSystem.STARTGAME, KeyCode.Mouse0, GameStateManager.GameState.STARTSCREEN);
         ActionSystem.RegisterAction(ActionSystem.STARTGAME, KeyCode.Space, GameStateManager.GameState.STARTSCREEN);
-
         ActionSystem.RegisterAction(ActionSystem.PAUSE, KeyCode.Escape, GameStateManager.GameState.GAMEPLAY, GameStateManager.GameState.PAUSE);
-        ActionSystem.RegisterAction(ActionSystem.SPELLBOOK, KeyCode.Tab, GameStateManager.GameState.GAMEPLAY, GameStateManager.GameState.PAUSE);
-
-        ActionSystem.RegisterAction(ActionSystem.ATTACK, KeyCode.Mouse0, GameStateManager.GameState.GAMEPLAY);
-        ActionSystem.RegisterAction(ActionSystem.ATTACKINITIATE, KeyCode.Mouse0, GameStateManager.GameState.GAMEPLAY);
-        ActionSystem.RegisterAction(ActionSystem.ATTACK, KeyCode.Return, GameStateManager.GameState.GAMEPLAY);
-        ActionSystem.RegisterAction(ActionSystem.ATTACKINITIATE, KeyCode.Return, GameStateManager.GameState.GAMEPLAY);
         ActionSystem.RegisterAction(ActionSystem.RUN, KeyCode.LeftShift, GameStateManager.GameState.GAMEPLAY);
-
         ActionSystem.RegisterAction(ActionSystem.MENUHORZ, Axis.LEFT_HORIZONTAL, GameStateManager.GameState.MENU, GameStateManager.GameState.PAUSE);
         ActionSystem.RegisterAction(ActionSystem.MENUVERT, Axis.LEFT_VERTICAL, GameStateManager.GameState.MENU, GameStateManager.GameState.PAUSE);
-
-
         ActionSystem.RegisterAction(ActionSystem.MENUSELECT, KeyCode.Space, GameStateManager.GameState.MENU, GameStateManager.GameState.PAUSE);
         ActionSystem.RegisterAction(ActionSystem.MENUQUIT, KeyCode.Escape, GameStateManager.GameState.MENU, GameStateManager.GameState.PAUSE);
-
-        ActionSystem.RegisterAction(ActionSystem.CLEARSWORDS, KeyCode.LeftShift, GameStateManager.GameState.GAMEPLAY);
-        ActionSystem.RegisterAction(ActionSystem.CLEARSWORDS, KeyCode.RightShift, GameStateManager.GameState.GAMEPLAY);
-
-        ActionSystem.RegisterAction(ActionSystem.CASTINGHORZ, Axis.RIGHT_HORIZONTAL, GameStateManager.GameState.GAMEPLAY);
-        ActionSystem.RegisterAction(ActionSystem.CASTINGVERT, Axis.RIGHT_VERTICAL, GameStateManager.GameState.GAMEPLAY);
-
-      //  ActionSystem.RegisterAction(ActionSystem.COMBOEND, KeyCode.Return);
-        ActionSystem.RegisterAction(ActionSystem.COMBOEND, KeyCode.RightShift, GameStateManager.GameState.GAMEPLAY);
-        ActionSystem.RegisterAction(ActionSystem.COMBOEND, KeyCode.KeypadEnter, GameStateManager.GameState.GAMEPLAY);
-
-        ActionSystem.RegisterAction(ActionSystem.MENUTABLEFT, KeyCode.LeftArrow, GameStateManager.GameState.MENU, GameStateManager.GameState.PAUSE);
-        ActionSystem.RegisterAction(ActionSystem.MENUTABRIGHT, KeyCode.RightArrow, GameStateManager.GameState.MENU, GameStateManager.GameState.PAUSE);
 
     }
 }
