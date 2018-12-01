@@ -29,6 +29,7 @@ public class SpawnManager : MonoBehaviour {
         {
             GameObject newCustomerObj = Instantiate(_customerPrefab);
             Customer newCustomer = newCustomerObj.GetComponent<Customer>();
+            newCustomer.AssignRandomBehavior();
             newCustomerObj.transform.parent = _customersInHierarchy.transform;
             newCustomerObj.transform.name = newCustomer.Behavior.GetType().ToString() + " " + i;
             newCustomerObj.GetComponent<MeshRenderer>().material.color = newCustomer.Behavior.Color;
