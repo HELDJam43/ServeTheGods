@@ -72,7 +72,7 @@ public static class GameStateManager
                 AudioListener.pause = true;
                 break;
             case GameState.GAMEOVER:
-                Time.timeScale = 0;
+                Time.timeScale = 1;
                 AudioListener.pause = true;
                 break;
             default:
