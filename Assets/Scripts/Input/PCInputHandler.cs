@@ -283,8 +283,8 @@ public class PCInputHandler : InputHandler
          base.RegisterActions();
         ActionSystem.RegisterAction(ActionSystem.PROCEEDTHROUGHDIALOGUE, KeyCode.Space, GameStateManager.GameState.DIALOUGE);
         ActionSystem.RegisterAction(ActionSystem.PROCEEDTHROUGHDIALOGUE, KeyCode.Mouse0, GameStateManager.GameState.DIALOUGE);
-        ActionSystem.RegisterAction(ActionSystem.INTERACT, KeyCode.Mouse1, GameStateManager.GameState.GAMEPLAY);
-        ActionSystem.RegisterAction(ActionSystem.INTERACT, KeyCode.Q, GameStateManager.GameState.GAMEPLAY);
+        ActionSystem.RegisterAction(ActionSystem.INTERACT, KeyCode.Mouse0, GameStateManager.GameState.GAMEPLAY);
+        ActionSystem.RegisterAction(ActionSystem.INTERACT, KeyCode.Space, GameStateManager.GameState.GAMEPLAY);
 
         ActionSystem.RegisterAction(ActionSystem.MOVEAXIS_X, Axis.LEFT_HORIZONTAL, GameStateManager.GameState.GAMEPLAY);
         ActionSystem.RegisterAction(ActionSystem.MOVEAXIS_Y, Axis.LEFT_VERTICAL, GameStateManager.GameState.GAMEPLAY);

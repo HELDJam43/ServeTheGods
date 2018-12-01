@@ -40,7 +40,7 @@ public class XboxInputHandler : InputHandler
     {
         base.RegisterActions();
         ActionSystem.RegisterAction(ActionSystem.PROCEEDTHROUGHDIALOGUE, Buttons.FIRE_0, GameStateManager.GameState.DIALOUGE);
-        ActionSystem.RegisterAction(ActionSystem.INTERACT, Buttons.FIRE_2, GameStateManager.GameState.GAMEPLAY);
+        ActionSystem.RegisterAction(ActionSystem.INTERACT, Buttons.FIRE_0, GameStateManager.GameState.GAMEPLAY);
 
         ActionSystem.RegisterAction(ActionSystem.MOVEAXIS_X, Axis.LEFT_HORIZONTAL, GameStateManager.GameState.GAMEPLAY);
         ActionSystem.RegisterAction(ActionSystem.MOVEAXIS_Y, Axis.LEFT_VERTICAL, GameStateManager.GameState.GAMEPLAY);
@@ -73,26 +73,27 @@ public class XboxInputHandler : InputHandler
         if (!playerIndexSet)
             return 0;
         float val = 0;
+        float sensitivity = 0.1f;
         switch (a)
         {
             case Axis.LEFT_HORIZONTAL:
                 val = state.ThumbSticks.Left.X;
-                if (val < .25f && val > -.25f)
+                if (val < sensitivity && val > -sensitivity)
                     val = 0;
                 break;
             case Axis.LEFT_VERTICAL:
                 val = state.ThumbSticks.Left.Y;
-                if (val < .25f && val > -.25f)
+                if (val < sensitivity && val > -sensitivity)
                     val = 0;
                 break;
             case Axis.RIGHT_HORIZONTAL:
                 val = state.ThumbSticks.Right.X;
-                if (val < .25f && val > -.25f)
+                if (val < sensitivity && val > -sensitivity)
                     val = 0;
                 break;
             case Axis.RIGHT_VERTICAL:
                 val = state.ThumbSticks.Right.Y;
-                if (val < .25f && val > -.25f)
+                if (val < sensitivity && val > -sensitivity)
                     val = 0;
                 break;
             case Axis.RIGHT_TRIGGER:

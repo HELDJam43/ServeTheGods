@@ -18,9 +18,11 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 camRight = Camera.main.transform.right * ActionSystem.GetActionAxis(ActionSystem.MOVEAXIS_X);
         camRight.y = 0;
-        Vector3 camForward= Camera.main.transform.up * ActionSystem.GetActionAxis(ActionSystem.MOVEAXIS_Y);
+        Vector3 camForward = Camera.main.transform.up * ActionSystem.GetActionAxis(ActionSystem.MOVEAXIS_Y);
         camForward.y = 0;
-        input = camRight + camForward;
+        input = camRight.normalized + camForward.normalized;
+        if (input.magnitude > 0)
+            transform.forward = input;
     }
     void FixedUpdate()
     {
