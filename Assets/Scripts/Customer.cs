@@ -1,42 +1,56 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Customer : MonoBehaviour {
 
-    private static int _id = 0;
     public CustomerBehavior Behavior { get { return _behavior; } set { _behavior = value; } }
 
     // Use this for initialization
     public Customer() {
-        AssignRandomBehavior();
+
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 
     private CustomerBehavior _behavior;
 
-    private void AssignRandomBehavior()
+    public void AssignRandomBehavior()
     {
-        if (TempIsEven(_id++))
+        CustomerBehavior.Attitude attitude = TempRanBehavior();
+        switch (attitude)
         {
-            _behavior = new NeutralCustomer();
-        }
-        else
-        {
-            _behavior = new AngryCustomer();
+            case CustomerBehavior.Attitude.Neutral:
+                {
+                    _behavior = new NeutralCustomer();
+                    break;
+                }
+            case CustomerBehavior.Attitude.Happy:
+                {
+                    _behavior = new HappyCustomer();
+                    break;
+                }
+            case CustomerBehavior.Attitude.Mild:
+                {
+                    _behavior = new MildCustomer();
+                    break;
+                }
+            case CustomerBehavior.Attitude.Angry:
+                {
+                    _behavior = new AngryCustomer();
+                    break;
+                }
         }
     }
 
-
-    private bool TempIsEven(int num)
+    private CustomerBehavior.Attitude TempRanBehavior()
     {
-        if (num % 2 == 0)
-            return true;
-        else
-            return false;
+        Array values = Enum.GetValues(typeof(CustomerBehavior.Attitude));
+        int x = UnityEngine.Random.Range(0, values.Length);
+        return (CustomerBehavior.Attitude)values.GetValue(x);
     }
 }

@@ -19,7 +19,27 @@ public class NeutralCustomer: CustomerBehavior
     {
         startingAttitude = Attitude.Neutral;
         currentAttitude = startingAttitude;
+        Color = Color.gray;
+    }
+}
+
+public class HappyCustomer : CustomerBehavior
+{
+    public HappyCustomer()
+    {
+        startingAttitude = Attitude.Neutral;
+        currentAttitude = startingAttitude;
         Color = Color.green;
+    }
+}
+
+public class MildCustomer : CustomerBehavior
+{
+    public MildCustomer()
+    {
+        startingAttitude = Attitude.Neutral;
+        currentAttitude = startingAttitude;
+        Color = Color.yellow;
     }
 }
 
