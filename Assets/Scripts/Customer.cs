@@ -6,16 +6,17 @@ using UnityEngine;
 public class Customer : MonoBehaviour {
 
     public CustomerBehavior Behavior { get { return _behavior; } set { _behavior = value; } }
+    public Food DesiredFood;
 
     // Use this for initialization
     public Customer() {
-
+        
 	}
 
     // Update is called once per frame
     void Update () {
-		
-	}
+
+    }
 
     private CustomerBehavior _behavior;
 
@@ -45,6 +46,11 @@ public class Customer : MonoBehaviour {
                     break;
                 }
         }
+    }
+
+    public void SetDesiredFood(Food desiredFood)
+    {
+        DesiredFood = desiredFood;
     }
 
     private CustomerBehavior.Attitude TempRanBehavior()
