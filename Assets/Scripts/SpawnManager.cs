@@ -18,6 +18,11 @@ public class SpawnManager : MonoBehaviour {
     public GameObject _foodInHierarchy;
     public GameObject[] _foodPrefabs = { null, null, null, null, null, null };
     public GameObject[] foodSpawnLocations = { null, null, null };
+    //Order Bubble
+    public GameObject _orderPrefab;
+
+    public int CustomerRespawnRate = 3;
+    public int FoodRespawnRate = 2;
 
     public static SpawnManager Instance;
     public MyIntEvent DespawnEvent;
@@ -53,18 +58,28 @@ public class SpawnManager : MonoBehaviour {
     }
 
     private SpawnInventory _inventory = new SpawnInventory();
+    private Queue<GameObject> _slotsToFree = new Queue<GameObject>();
 
     private void DespawnSomething(GameObject go)
     {
-        if (go.GetComponent<Customer>() == null)
+        _slotsToFree.Enqueue(go);
+        Invoke("DelayedRespawn", go.GetComponent<Customer>() == null ? FoodRespawnRate : CustomerRespawnRate);
+    }
+
+    private void DelayedRespawn()
+    {
+        GameObject slot = _slotsToFree.Dequeue();
+        if (slot.GetComponent<Customer>() == null)
         {
-            _inventory.FreeFoodSlot(go);
+            _inventory.FreeFoodSlot(slot);
         }
         else
         {
-            _inventory.FreeChairSlot(go);
+            _inventory.FreeChairSlot(slot);
         }
     }
+
+
 
     private void DespawnEverything()
     {
@@ -82,10 +97,11 @@ public class SpawnManager : MonoBehaviour {
             newCustomer.AssignRandomBehavior();
             newCustomerObj.transform.parent = _customersInHierarchy.transform;
             newCustomerObj.transform.name = newCustomer.Behavior.GetType().ToString();
-           // newCustomerObj.GetComponent<MeshRenderer>().material.color = newCustomer.Behavior.Color;
 
             int slot = _inventory.TakeChairSlot(newCustomerObj);
             newCustomerObj.transform.position = customerSpawnLocations[slot].transform.position;
+
+            newCustomer.SetDesiredFood(SpawnOrderBubble(newCustomerObj));
         }
     }
 
@@ -99,5 +115,16 @@ public class SpawnManager : MonoBehaviour {
             int slot = _inventory.TakeFoodSlot(newFoodObj);
             newFoodObj.transform.position = foodSpawnLocations[slot].transform.position;
         }
+    }
+
+    private Food SpawnOrderBubble(GameObject obj)
+    {
+        GameObject newOrderBubble = Instantiate(_orderPrefab, obj.transform, false);
+        newOrderBubble.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y + 1, obj.transform.position.z);
+
+        GameObject foodType = newOrderBubble.transform.Find("FoodType").gameObject;
+        Food selectedFood = FoodManager.GetRandomFood();
+        foodType.GetComponentInChildren<MeshFilter>().sharedMesh = selectedFood.foodMesh;
+        return selectedFood;
     }
 }

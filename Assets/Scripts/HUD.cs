@@ -16,7 +16,6 @@ public class HUD : MonoBehaviour
     }
     void Start()
     {
-        SetRageMeter(Random.Range(0.0f, 1.0f));
         SetReviewValue(Random.Range(1, 11));
     }
 
@@ -40,14 +39,14 @@ public class HUD : MonoBehaviour
             stars[0].fillAmount = .5f;
     }
 
-    public IEnumerator UpdateGodRage(float targetValue)
+    IEnumerator UpdateGodRage(float targetValue)
     {
         float t = 0;
-        float duration = 1;
+        float duration = .5f;
         float startVal = godRageImage.fillAmount;
         while (t < duration)
         {
-            godRageImage.fillAmount = Mathf.Lerp(startVal, targetValue, t);
+            godRageImage.fillAmount = Mathf.Lerp(startVal, targetValue, t/duration);
             t += Time.deltaTime;
             yield return null;
         }
