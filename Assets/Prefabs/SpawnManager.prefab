@@ -90,7 +90,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1240809782572676}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.8064432, y: -0.29170132, z: 2.9681673}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4905091017697504}
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d63c72c541c4fbb8a76885dfb7b944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _customersInHierarchy: {fileID: 0}
+  _customersInHierarchy: {fileID: 1913574011283030}
   _customerPrefab: {fileID: 1546921984850774, guid: 2c6fdecff56584da3ad8378eaf43f3ef,
     type: 2}
   customerSpawnLocations:
