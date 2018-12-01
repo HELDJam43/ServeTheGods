@@ -21,6 +21,9 @@ public class SpawnManager : MonoBehaviour {
     //Order Bubble
     public GameObject _orderPrefab;
 
+    public int CustomerRespawnRate = 3;
+    public int FoodRespawnRate = 2;
+
     public static SpawnManager Instance;
     public MyIntEvent DespawnEvent;
     // Use this for initialization
@@ -55,18 +58,28 @@ public class SpawnManager : MonoBehaviour {
     }
 
     private SpawnInventory _inventory = new SpawnInventory();
+    private Queue<GameObject> _slotsToFree = new Queue<GameObject>();
 
     private void DespawnSomething(GameObject go)
     {
-        if (go.GetComponent<Customer>() == null)
+        _slotsToFree.Enqueue(go);
+        Invoke("DelayedRespawn", go.GetComponent<Customer>() == null ? FoodRespawnRate : CustomerRespawnRate);
+    }
+
+    private void DelayedRespawn()
+    {
+        GameObject slot = _slotsToFree.Dequeue();
+        if (slot.GetComponent<Customer>() == null)
         {
-            _inventory.FreeFoodSlot(go);
+            _inventory.FreeFoodSlot(slot);
         }
         else
         {
-            _inventory.FreeChairSlot(go);
+            _inventory.FreeChairSlot(slot);
         }
     }
+
+
 
     private void DespawnEverything()
     {
