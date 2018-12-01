@@ -16,6 +16,7 @@ public class SpawnManager : MonoBehaviour {
 
 
     List<Customer> _customers = new List<Customer>();
+    List<GameObject> _food = new List<GameObject>();
 
 	// Use this for initialization
 	void Awake () {
@@ -47,10 +48,10 @@ public class SpawnManager : MonoBehaviour {
     {
         for (int i = 0; i < foodSpawnLocations.Length; i++)
         {
-            GameObject newFoodObj = Instantiate(_foodPrefabs[i]);
+            GameObject newFoodObj = Instantiate(_foodPrefabs[UnityEngine.Random.Range(0, _foodPrefabs.Length)]);
             newFoodObj.transform.parent = _foodInHierarchy.transform;
             newFoodObj.transform.position = foodSpawnLocations[i].transform.position;
-            //_customers.Add(newCustomer);
+            _food.Add(newFoodObj);
         }
     }
 }
