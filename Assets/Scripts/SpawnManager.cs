@@ -5,17 +5,22 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour {
 
     //Prefab references
+    //Customers
     public GameObject _customersInHierarchy;
     public GameObject _customerPrefab;
     public GameObject[] customerSpawnLocations = { null, null, null, null };
+    //Food
+    public GameObject _foodInHierarchy;
+    public GameObject[] _foodPrefabs = { null, null, null, null, null, null };
+    public GameObject[] foodSpawnLocations = { null, null, null };
 
 
     List<Customer> _customers = new List<Customer>();
 
 	// Use this for initialization
 	void Awake () {
-
         SpawnInitialCustomers();
+        SpawnInitialFood();
 	}
 	
 	// Update is called once per frame
@@ -35,6 +40,17 @@ public class SpawnManager : MonoBehaviour {
             newCustomerObj.GetComponent<MeshRenderer>().material.color = newCustomer.Behavior.Color;
             newCustomerObj.transform.position = customerSpawnLocations[i].transform.position;
             _customers.Add(newCustomer);
+        }
+    }
+
+    private void SpawnInitialFood()
+    {
+        for (int i = 0; i < foodSpawnLocations.Length; i++)
+        {
+            GameObject newFoodObj = Instantiate(_foodPrefabs[i]);
+            newFoodObj.transform.parent = _foodInHierarchy.transform;
+            newFoodObj.transform.position = foodSpawnLocations[i].transform.position;
+            //_customers.Add(newCustomer);
         }
     }
 }
