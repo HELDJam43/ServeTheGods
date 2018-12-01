@@ -7,6 +7,7 @@ public class Customer : MonoBehaviour {
 
     public CustomerBehavior Behavior { get { return _behavior; } set { _behavior = value; } }
     public Food DesiredFood;
+    public GameObject OrderBubble;
 
     // Use this for initialization
     public Customer() {
@@ -16,6 +17,14 @@ public class Customer : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.name.Contains(DesiredFood.name.ToLower()))
+        {
+            //TODO MORE here instead of just getting rid of bubble
+            Destroy(OrderBubble);
+        }
     }
 
     private CustomerBehavior _behavior;
@@ -48,9 +57,10 @@ public class Customer : MonoBehaviour {
         }
     }
 
-    public void SetDesiredFood(Food desiredFood)
+    public void SetDesiredFood(Food desiredFood,GameObject orderBubble)
     {
         DesiredFood = desiredFood;
+        OrderBubble = orderBubble;
     }
 
     private CustomerBehavior.Attitude TempRanBehavior()

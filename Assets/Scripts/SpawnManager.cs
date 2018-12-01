@@ -101,7 +101,8 @@ public class SpawnManager : MonoBehaviour {
             int slot = _inventory.TakeChairSlot(newCustomerObj);
             newCustomerObj.transform.position = customerSpawnLocations[slot].transform.position;
 
-            newCustomer.SetDesiredFood(SpawnOrderBubble(newCustomerObj));
+            Food selectedFood = FoodManager.GetRandomFood();
+            newCustomer.SetDesiredFood(selectedFood,SpawnOrderBubble(selectedFood,newCustomerObj));
         }
     }
 
@@ -117,14 +118,14 @@ public class SpawnManager : MonoBehaviour {
         }
     }
 
-    private Food SpawnOrderBubble(GameObject obj)
+    private GameObject SpawnOrderBubble(Food selectedFood,GameObject obj)
     {
         GameObject newOrderBubble = Instantiate(_orderPrefab, obj.transform, false);
         newOrderBubble.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y + 1, obj.transform.position.z);
 
         GameObject foodType = newOrderBubble.transform.Find("FoodType").gameObject;
-        Food selectedFood = FoodManager.GetRandomFood();
+      
         foodType.GetComponentInChildren<MeshFilter>().sharedMesh = selectedFood.foodMesh;
-        return selectedFood;
+        return newOrderBubble;
     }
 }
