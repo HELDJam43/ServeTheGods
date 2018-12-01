@@ -289,6 +289,8 @@ public class PCInputHandler : InputHandler
         ActionSystem.RegisterAction(ActionSystem.MOVEAXIS_X, Axis.LEFT_HORIZONTAL, GameStateManager.GameState.GAMEPLAY);
         ActionSystem.RegisterAction(ActionSystem.MOVEAXIS_Y, Axis.LEFT_VERTICAL, GameStateManager.GameState.GAMEPLAY);
 
+        ActionSystem.RegisterAction(ActionSystem.MOVEAXIS_X, Axis.RIGHT_HORIZONTAL, GameStateManager.GameState.GAMEPLAY);
+        ActionSystem.RegisterAction(ActionSystem.MOVEAXIS_Y, Axis.RIGHT_VERTICAL, GameStateManager.GameState.GAMEPLAY);
 
         ActionSystem.RegisterAction(ActionSystem.CAMERAAXIS, Axis.LEFT_VERTICAL, GameStateManager.GameState.GAMEPLAY);
         ActionSystem.RegisterAction(ActionSystem.JUMP, KeyCode.Space, GameStateManager.GameState.GAMEPLAY);
