@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     Rigidbody rBody;
-    float speed = 8;
+    float speed = 400;
     Vector3 input;
     // Use this for initialization
     void Start()
@@ -24,8 +24,9 @@ public class PlayerController : MonoBehaviour
     }
     void FixedUpdate()
     {
-        Vector3 targetPos = transform.position;
-        targetPos += (input * speed * Time.deltaTime);
-        rBody.MovePosition(targetPos);
+        //Vector3 targetPos = transform.position;
+        //targetPos += (input * speed * Time.deltaTime);
+        //rBody.MovePosition(targetPos);
+        rBody.velocity = input * speed * Time.fixedDeltaTime;
     }
 }
