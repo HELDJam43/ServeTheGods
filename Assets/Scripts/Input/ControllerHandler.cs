@@ -14,9 +14,9 @@ public class ControllerHandler : MonoBehaviour {
     void Awake () {
         UsePC();
 	}
-	
-	// Update is called once per frame
-	void Update () {
+#if !UNITY_STANDALONE_OSX && !UNITY_EDITOR_OSX
+    // Update is called once per frame
+    void Update () {
        
         state = GamePad.GetState((PlayerIndex)0);
         if (usingController)
@@ -30,7 +30,7 @@ public class ControllerHandler : MonoBehaviour {
                 UseXbox();
         }
     }
-
+#endif
     void UsePC()
     {
         usingController = false;
