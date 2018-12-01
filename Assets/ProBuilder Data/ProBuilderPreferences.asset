@@ -16,14 +16,22 @@ MonoBehaviour:
   - pbDefaultEditLevel
   - pb_GIWorkflowMode
   - pbDefaultSelectionMode
-  m_Float_keys: []
+  - pbHandleAlignment
+  - pbExtrudeMethod
+  m_Float_keys:
+  - pbEditorScroll.x
+  - pbEditorScroll.y
+  - pbExtrudeDistance
   m_String_keys:
   - pbCurrentMaterialPalette
   m_Color_keys: []
   m_Material_keys: []
   m_Bool_values: 
-  m_Int_values: 010000000100000002000000
-  m_Float_values: []
+  m_Int_values: 0000000001000000020000000000000001000000
+  m_Float_values:
+  - 0
+  - 0
+  - 0.25
   m_String_values:
   - Assets/ProBuilder Data//Default Material Palette.asset
   m_Color_values: []
