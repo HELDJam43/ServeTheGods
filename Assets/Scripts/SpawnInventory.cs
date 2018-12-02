@@ -46,13 +46,11 @@ public class SpawnInventory
 
     public bool FoodSlotOpen()
     {
-
         foreach (KeyValuePair<int, GameObject> objs in _foodSlot)
         {
             if (objs.Value == null)
-            {
+
                 return true;
-            }
         }
         return false;
     }
@@ -106,16 +104,15 @@ public class SpawnInventory
 
     public bool ChairSlotOpen()
     {
-
         foreach (KeyValuePair<int, GameObject> objs in _chairSlot)
         {
             if (objs.Value == null)
-            {
+
                 return true;
-            }
         }
         return false;
     }
+
 
     public void FreeChairSlot(GameObject go)
     {
@@ -166,13 +163,11 @@ public class SpawnInventory
 
     public bool GodChairSlotOpen()
     {
-
         foreach (KeyValuePair<int, GameObject> objs in _godChairSlot)
         {
             if (objs.Value == null)
-            {
+
                 return true;
-            }
         }
         return false;
     }

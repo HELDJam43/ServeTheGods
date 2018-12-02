@@ -30,7 +30,9 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         SpawnManager.Instance.Init(level);
-        Instance.hud.SetRageMeter(0);
+        currentGodRage = level._startingGodRageLevel;
+        Instance.hud.SetRageMeter(currentGodRage/maxGodRage);
+        Instance.reviewRank = (int)level._startingStarLevel;
         Instance.hud.SetReviewValue(Instance.CalcStars());
     }
 
@@ -95,7 +97,7 @@ public class LevelManager : MonoBehaviour
     public static void CustomerOrderDelivered()
     {
         if (GameStateManager.State == GameStateManager.GameState.GAMEOVER) return;
-        Instance.reviewRank += 10;
+        Instance.reviewRank += (10 * Instance.level._scoreMultiplier);
         Instance.hud.SetReviewValue(Instance.CalcStars());
     }
     public int CalcStars()

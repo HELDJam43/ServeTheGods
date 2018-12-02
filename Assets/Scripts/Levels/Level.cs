@@ -14,7 +14,9 @@ public class Level: MonoBehaviour
 
     public int _foodInitialCount;
     public int _foodTotalCount;
-    public float _footSpawnRate = 2;
+    public float _foodSpawnRate = 2;
 
-    public float _scoreMultiplier = 1;
+    public int _scoreMultiplier = 2;
+    public LevelManager.StarRank _startingStarLevel;
+    public int _startingGodRageLevel = 0;
 }

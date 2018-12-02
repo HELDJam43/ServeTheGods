@@ -84,12 +84,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _index: 0
   _customerInitialCount: 1
-  _customerTotalCount: 0
-  _customerSpawnRate: 3
+  _customerTotalCount: 5
+  _customerSpawnRate: 4
   _godInitialCount: 0
   _godTotalCount: 0
   _godSpawnRate: 4
   _foodInitialCount: 1
-  _foodTotalCount: 0
-  _footSpawnRate: 2
-  _scoreMultiplier: 1
+  _foodTotalCount: 6
+  _foodSpawnRate: 2
+  _scoreMultiplier: 2
+  _startingStarLevel: 0
+  _startingGodRageLevel: 0

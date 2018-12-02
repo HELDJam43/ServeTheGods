@@ -31,9 +31,9 @@ public class SpawnManager : MonoBehaviour
     public GameObject _orderPrefab;
     #endregion
 
-    public int CustomerRespawnRate = 3;
-    public int FoodRespawnRate = 2;
-    public int GodSpawnRate = 4;
+    private int _currentCustomerCount = 0;
+    private int _currentFoodCount = 0;
+    private int _currentGodCount = 0;
 
     public static SpawnManager Instance;
     public MyIntEvent DespawnEvent;
@@ -63,7 +63,7 @@ public class SpawnManager : MonoBehaviour
     {
         _level = level;
 
-        for (int i = 0; i < level._customerInitialCount; i ++)
+        for (int i = 0; i < level._customerInitialCount; i++)
         {
             SpawnInitialCustomers();
         }
@@ -77,6 +77,10 @@ public class SpawnManager : MonoBehaviour
         {
             SpawnInitialGods();
         }
+
+        _currentCustomerCount = level._customerInitialCount;
+        _currentFoodCount = level._foodInitialCount;
+        _currentGodCount = level._godInitialCount;
     }
 
     void ScoreAdd(int num)
@@ -87,6 +91,11 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        SpawnCustomers();
+        SpawnFood();
+        SpawnGod();
+
         if (Input.GetKeyUp(KeyCode.R))
         {
             DespawnEverything();
@@ -96,11 +105,14 @@ public class SpawnManager : MonoBehaviour
     private SpawnInventory _inventory = new SpawnInventory();
     private Queue<GameObject> _slotsToFree = new Queue<GameObject>();
     private Level _level;
+    bool _custermerSpawnWaiting = false;
+    bool _foodSpawnWaiting = false;
+    bool _godSpawnWaiting = false;
 
     private void DespawnSomething(GameObject go)
     {
         _slotsToFree.Enqueue(go);
-        Invoke("DelayedRespawn", go.GetComponent<Customer>() == null ? FoodRespawnRate : CustomerRespawnRate);
+        Invoke("DelayedRespawn", go.GetComponent<Customer>() == null ? _level._foodSpawnRate : _level._customerSpawnRate);
     }
 
     private void DelayedRespawn()
@@ -111,6 +123,7 @@ public class SpawnManager : MonoBehaviour
 
         if (slot.GetComponent<Customer>() == null)
         {
+            SpawnInitialFood();
             _inventory.FreeFoodSlot(slot);
         }
         else
@@ -131,8 +144,10 @@ public class SpawnManager : MonoBehaviour
 
     private void SpawnInitialCustomers()
     {
-        if (_inventory.ChairSlotOpen())
+        _custermerSpawnWaiting = false;
+        if (_inventory.ChairSlotOpen() && _currentCustomerCount < _level._customerTotalCount)
         {
+            _currentCustomerCount++;
             GameObject newCustomerObj = Instantiate(_customerPrefabs[UnityEngine.Random.Range(0, _customerPrefabs.Length)]);
             Customer newCustomer = newCustomerObj.AddComponent<Customer>();
             newCustomer.AssignRandomBehavior();
@@ -152,10 +167,19 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    private void SpawnCustomers()
+    {
+        if (_custermerSpawnWaiting) return;
+        _custermerSpawnWaiting = true;
+        Invoke("SpawnInitialCustomers", _level._customerSpawnRate);
+    }
+
     private void SpawnInitialGods()
     {
-        if (_inventory.GodChairSlotOpen())
+        _godSpawnWaiting = false;
+        if (_inventory.GodChairSlotOpen() && _currentGodCount < _level._godTotalCount)
         {
+            _currentGodCount++;
             GameObject newGodObj = Instantiate(_godPrefabs[UnityEngine.Random.Range(0, _godPrefabs.Length)]);
             God newGod = newGodObj.AddComponent<God>();
             newGodObj.transform.parent = _godsInHierarchy.transform;
@@ -171,16 +195,32 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    private void SpawnGod()
+    {
+        if (_godSpawnWaiting) return;
+        _godSpawnWaiting = true;
+        Invoke("SpawnInitialGods", _level._godSpawnRate);
+    }
+
     private void SpawnInitialFood()
     {
-        if (_inventory.FoodSlotOpen())
+        _foodSpawnWaiting = false;
+        if (_inventory.FoodSlotOpen() && _currentFoodCount < _level._foodTotalCount)
         {
+            _currentFoodCount++;
             GameObject newFoodObj = Instantiate(_foodPrefabs[UnityEngine.Random.Range(0, _foodPrefabs.Length)]);
             newFoodObj.transform.parent = _foodInHierarchy.transform;
 
             int slot = _inventory.TakeFoodSlot(newFoodObj);
             newFoodObj.transform.position = foodSpawnLocations[slot].transform.position;
         }
+    }
+
+    private void SpawnFood()
+    {
+        if (_foodSpawnWaiting) return;
+        _foodSpawnWaiting = true;
+        Invoke("SpawnInitialFood", _level._foodSpawnRate);
     }
 
     private GameObject SpawnOrderBubble(Food selectedFood, GameObject obj)
