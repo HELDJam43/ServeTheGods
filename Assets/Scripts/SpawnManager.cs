@@ -76,6 +76,9 @@ public class SpawnManager : MonoBehaviour {
     private void DelayedRespawn()
     {
         GameObject slot = _slotsToFree.Dequeue();
+        if (slot == null)
+            return;
+
         if (slot.GetComponent<Customer>() == null)
         {
             _inventory.FreeFoodSlot(slot);

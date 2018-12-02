@@ -24,6 +24,8 @@ public class Customer : MonoBehaviour {
         {
             //TODO MORE here instead of just getting rid of bubble
             Destroy(OrderBubble);
+            LevelManager.CustomerOrderDelivered();
+            Destroy(collision.gameObject);
         }
     }
 
