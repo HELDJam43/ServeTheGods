@@ -12,11 +12,7 @@ public class HUD : MonoBehaviour
     void Awake()
     {
         godRageImage = transform.FindDeepChild<Image>("God Rage");
-        stars= transform.FindDeepChild("Review UI").GetComponentsInChildren<Image>();
-    }
-    void Start()
-    {
-        SetReviewValue(Random.Range(1, 11));
+        stars = transform.FindDeepChild("Review UI").GetComponentsInChildren<Image>();
     }
 
     public void SetRageMeter(float val)
@@ -28,11 +24,14 @@ public class HUD : MonoBehaviour
 
     public void SetReviewValue(int val) //1 -10
     {
-        bool halfLast = val % 2 == 1;
         int target = val / 2;
+        bool halfLast = val % 2 == 1;
         for (int i = 0; i < 5; i++)
         {
-            stars[i].gameObject.SetActive(i <= target);
+            if (halfLast)
+                stars[i].gameObject.SetActive(i <= target);
+            else
+                stars[i].gameObject.SetActive(i < target);
             stars[i].fillAmount = 1;
         }
         if (halfLast)
@@ -46,7 +45,7 @@ public class HUD : MonoBehaviour
         float startVal = godRageImage.fillAmount;
         while (t < duration)
         {
-            godRageImage.fillAmount = Mathf.Lerp(startVal, targetValue, t/duration);
+            godRageImage.fillAmount = Mathf.Lerp(startVal, targetValue, t / duration);
             t += Time.deltaTime;
             yield return null;
         }
