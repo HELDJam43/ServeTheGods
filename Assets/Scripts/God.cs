@@ -8,7 +8,13 @@ public class God : MonoBehaviour
     public Food DesiredFood;
     public GameObject OrderBubble;
     public Timer DesireTimer;
-
+    private Timer eatingTimer;
+    GodState state = GodState.WAITING;
+    public enum GodState
+    {
+        WAITING,
+        EATING,
+    }
     // Use this for initialization
     public God()
     {
@@ -18,7 +24,7 @@ public class God : MonoBehaviour
     {
         MakeTimer();
     }
-    
+
 
     // Update is called once per frame
     void Update()
@@ -28,7 +34,7 @@ public class God : MonoBehaviour
 
     private void MakeTimer()
     {
-        GameObject obj = Instantiate(Global.TimerPrefab,gameObject.transform);
+        GameObject obj = Instantiate(Global.TimerPrefab, gameObject.transform);
         DesireTimer = obj.GetComponent<Timer>();
         DesireTimer.StartTimer(UnityEngine.Random.Range(50, 100), transform, 2.7f, HandleOnTimerComplete);
     }
@@ -39,12 +45,23 @@ public class God : MonoBehaviour
         {
             //TODO MORE here instead of just getting rid of bubble
             Destroy(OrderBubble);
-            LevelManager.GodOrderDelivered();
             Destroy(collision.gameObject);
-            ResetDesiredFood();
+            OnRecieveFood();
         }
     }
-
+    void OnRecieveFood()
+    {
+        state = GodState.EATING;
+        LevelManager.GodOrderDelivered();
+        GameObject obj = Instantiate(Global.TimerPrefab);
+        eatingTimer = obj.GetComponent<Timer>();
+        Destroy(DesireTimer.gameObject);
+        eatingTimer.StartTimer(UnityEngine.Random.Range(10, 30), transform, 2.7f, OnFinisheEating);
+    }
+    void OnFinisheEating()
+    {
+        ResetDesiredFood();
+    }
     public void SetDesiredFood(Food desiredFood, GameObject orderBubble)
     {
         DesiredFood = desiredFood;
@@ -53,7 +70,7 @@ public class God : MonoBehaviour
 
     public void ResetDesiredFood()
     {
-        Destroy(DesireTimer);
+        
         MakeTimer();
         SpawnManager.Instance.ResetFoodEvent.Invoke(gameObject);
     }
