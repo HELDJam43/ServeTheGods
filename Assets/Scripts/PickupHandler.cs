@@ -8,6 +8,7 @@ public class PickupHandler : MonoBehaviour
     Transform pickupLocation, heldLocation;
     float throwForce = 150;
     float pickRadius = .75f;
+    Rigidbody rBody;
     public Transform PickupLocation
     {
         get
@@ -24,10 +25,10 @@ public class PickupHandler : MonoBehaviour
     }
 
     // Use this for initialization
-    IEnumerator Start()
+    void Start()
     {
-        heldLocation = transform.Find("Held location");
-        yield return null;
+        heldLocation = transform.FindDeepChild("HeldObjectOrigin");
+        rBody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -68,7 +69,7 @@ public class PickupHandler : MonoBehaviour
     {
         currentObject = p;
         currentObject.rBody.isKinematic = true;
-        currentObject.transform.parent = (transform);
+        currentObject.transform.parent = (heldLocation);
         currentObject.transform.position = heldLocation.position;
         currentObject.transform.localEulerAngles = Vector3.zero;
 
@@ -80,9 +81,10 @@ public class PickupHandler : MonoBehaviour
         currentObject.rBody.isKinematic = false;
         if (pos == null)
         {
-
+            currentObject.rBody.velocity = rBody.velocity / 1.5f;
             currentObject.rBody.AddForce(transform.forward * throwForce);
         }
+        currentObject.transform.localScale = Vector3.one;
         currentObject = null;
     }
     void OnDrawGizmosSelected()
