@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3192f95f124ae4b488cb920938c57a22, type: 3}
+  m_Name: Hotdog
+  m_EditorClassIdentifier: 
+  foodName: Hotdog
+  foodPrefab: {fileID: 1974347726225006, guid: c7ebc0d6902c80f45a85b35a83afee0e, type: 2}
+  foodMesh: {fileID: 4300000, guid: f0642be8d7043104780ed8847d37e112, type: 3}

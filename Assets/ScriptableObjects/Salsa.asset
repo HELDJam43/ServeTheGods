@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3192f95f124ae4b488cb920938c57a22, type: 3}
+  m_Name: Salsa
+  m_EditorClassIdentifier: 
+  foodName: Salsa
+  foodPrefab: {fileID: 1490818979221672, guid: eff6eb9ce0354de488de67350f61a59c, type: 2}
+  foodMesh: {fileID: 4300000, guid: 81a30df41418a9f4d91b7d54f4a167e4, type: 3}
