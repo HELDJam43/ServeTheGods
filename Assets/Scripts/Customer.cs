@@ -99,21 +99,27 @@ public class Customer : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
-    public void WalkToInitialLocation(Waypoints.Waypoint dest)
+    public void WalkToInitialLocation(Waypoints.Waypoint dest, bool isInitial)
     {
+        if (isInitial)
+        {
+            ReachDestination(dest);
+            return;
+        }
         state = AIState.ARRIVING;
         Vector3 offset = UnityEngine.Random.onUnitSphere * 4;
         offset.y = 0;
-        transform.position = Global.Spawn.transform.position+offset;
+        transform.position = Global.Spawn.transform.position + offset;
         if (wm == null)
             wm = gameObject.AddComponent<WaypointMovement>();
         wm.StartMoving(Global.EntranceWaypoint, dest, null, ReachDestination, 0);
     }
     void ReachDestination(Waypoints.Waypoint w)
     {
-        wm.StopMoving(false);
+        if (wm)
+            wm.StopMoving(false);
         state = AIState.WAITING;
-        Vector3 vec= w.transform.position
+        Vector3 vec = w.transform.position
                 - (w.transform.forward * .375f)
                 - (w.transform.right * .375f);
         vec.y = 0.5f;
@@ -121,7 +127,7 @@ public class Customer : MonoBehaviour
 
         transform.forward = -w.transform.right;
         Food selectedFood = FoodManager.GetRandomCustomerFood();
-        GameObject orderBub =SpawnManager.Instance.SpawnOrderBubble(selectedFood, gameObject);
+        GameObject orderBub = SpawnManager.Instance.SpawnOrderBubble(selectedFood, gameObject);
         orderBub.transform.localEulerAngles = new Vector3(0, 90, 0);
         SetDesiredFood(selectedFood, orderBub);
     }
