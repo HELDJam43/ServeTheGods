@@ -53,6 +53,7 @@ public class God : MonoBehaviour
 
     public void ResetDesiredFood()
     {
+        Destroy(DesireTimer);
         MakeTimer();
         SpawnManager.Instance.ResetFoodEvent.Invoke(gameObject);
     }
