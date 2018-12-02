@@ -10,10 +10,9 @@ public class Customer : MonoBehaviour
     public Food DesiredFood;
     public GameObject OrderBubble;
 
-    private bool wander = false;
-    private float Speed = 0.5f;
     private Vector3 wayPoint;
-    private float Range = 5;
+    private Timer eatingTimer;
+
     AIState state = AIState.WAITING;
 
     public enum AIState
@@ -30,8 +29,23 @@ public class Customer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (transform.position.y >= 1)
+        {
+            if (state == AIState.EATING)
+            {
+                eatingTimer.StopTimer();
+            }
+        
+            state = AIState.HELD;
+        }
+        else
+            if (state == AIState.HELD && transform.position.y < .3f)
+        {
+            OnScared();
+        }
 
     }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (state != AIState.WAITING) return;
@@ -48,8 +62,8 @@ public class Customer : MonoBehaviour
         state = AIState.EATING;
         LevelManager.CustomerOrderDelivered();
         GameObject obj = Instantiate(Global.TimerPrefab);
-        Timer DesireTimer = obj.GetComponent<Timer>();
-        DesireTimer.StartTimer(15, transform, 2, OnFinisheEating);
+        eatingTimer = obj.GetComponent<Timer>();
+        eatingTimer.StartTimer(15, transform, 2, OnFinisheEating);
 
     }
     void OnFinisheEating()
@@ -57,6 +71,12 @@ public class Customer : MonoBehaviour
         WaypointMovement wm = gameObject.AddComponent<WaypointMovement>();
         wm.StartMoving(null, Global.EntranceWaypoint, Despawn, null);
         state = AIState.LEAVING;
+    }
+    void OnScared()
+    {
+        WaypointMovement wm = gameObject.AddComponent<WaypointMovement>();
+        wm.StartMoving(null, Global.EntranceWaypoint, Despawn, null);
+        state = AIState.SCARED;
     }
     void Despawn()
     {
