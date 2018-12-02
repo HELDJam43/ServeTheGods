@@ -19,6 +19,7 @@ public class LevelManager : MonoBehaviour
     int reviewRank = (int)StarRank.TWO;
     public HUD hud;
     public GameOverUI ui;
+    public NextLevelUI nextLevelui;
     Level level;
     void Awake()
     {
@@ -62,6 +63,11 @@ public class LevelManager : MonoBehaviour
         GameStateManager.SetState(GameStateManager.GameState.GAMEOVER);
         StartCoroutine(ShowGameOverScreen());
     }
+    public void Win()
+    {
+        GameStateManager.SetState(GameStateManager.GameState.NEXTLEVEL);
+        StartCoroutine(ShowNextLevelScreen());
+    }
     public static void GodOrderFailed()
     {
         if (GameStateManager.State == GameStateManager.GameState.GAMEOVER) return;
@@ -99,6 +105,11 @@ public class LevelManager : MonoBehaviour
         if (GameStateManager.State == GameStateManager.GameState.GAMEOVER) return;
         Instance.reviewRank += Instance.level._scoreAdditive;
         Instance.hud.SetReviewValue(Instance.CalcStars());
+
+        if (Instance.reviewRank >= 600)
+        {
+            Instance.Win();
+        }
     }
     public int CalcStars()
     {
@@ -160,6 +171,19 @@ public class LevelManager : MonoBehaviour
             c.alpha = Mathf.Lerp(0, 1, t / duration);
             t += Time.deltaTime;
             yield return null;
+        }
+    }
+    IEnumerator ShowNextLevelScreen()
+    {
+        float t = 0;
+        float duration = .5f;
+        CanvasGroup c = nextLevelui.GetComponent<CanvasGroup>();
+        while (t < duration)
+        {
+            c.alpha = Mathf.Lerp(0, 1, t / duration);
+            t += Time.deltaTime;
+            yield return null;
+            GameObject.Destroy(nextLevelui);
         }
     }
 }
