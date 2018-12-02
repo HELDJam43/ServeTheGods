@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3192f95f124ae4b488cb920938c57a22, type: 3}
+  m_Name: Chicken
+  m_EditorClassIdentifier: 
+  foodName: Chicken
+  foodPrefab: {fileID: 1266723178929520, guid: 7d44f1660bc00044eacdf7c96494ece0, type: 2}
+  foodMesh: {fileID: 4300000, guid: 1df0dcc6b394b124d935d86cc8be51a1, type: 3}

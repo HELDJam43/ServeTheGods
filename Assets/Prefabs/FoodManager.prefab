@@ -51,10 +51,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c82b02cb63be88e488f5724b036ba434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allFoods:
+  customerFoods:
   - {fileID: 11400000, guid: 824dd8ca26bd4934fb9f8fb128b8819c, type: 2}
   - {fileID: 11400000, guid: b1260275d5e6ef94097306e001133467, type: 2}
   - {fileID: 11400000, guid: 92bf31fe68bfbbb489c0d9eb13b27761, type: 2}
   - {fileID: 11400000, guid: 3c7c9c6e42b43384c81b26d0a00ebea6, type: 2}
-  - {fileID: 11400000, guid: f0686dc944e987446be3ecf85c446fc2, type: 2}
   - {fileID: 11400000, guid: 3b97c3d5ebd5dc9438bdc421cd1c2629, type: 2}
+  godFoods:
+  - {fileID: 11400000, guid: 2747b7dea4e833646a42fddc9fa8209d, type: 2}
+  - {fileID: 11400000, guid: 62b944c8a87f73e48a8a9fe9d0e97f2b, type: 2}
+  - {fileID: 11400000, guid: 64f1c6a7d341fea4a8533997d71b1804, type: 2}
+  - {fileID: 11400000, guid: b27a86c314a10a34fb9cccf047b02148, type: 2}
+  - {fileID: 11400000, guid: f0686dc944e987446be3ecf85c446fc2, type: 2}
