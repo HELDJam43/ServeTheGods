@@ -16,15 +16,21 @@ public class God : MonoBehaviour
     }
     private void Awake()
     {
-        GameObject obj = Instantiate(Global.TimerPrefab);
-        DesireTimer = obj.GetComponent<Timer>();
-        DesireTimer.StartTimer(UnityEngine.Random.Range(10, 30), transform, 2, HandleOnTimerComplete);
+        MakeTimer();
     }
+    
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    private void MakeTimer()
+    {
+        GameObject obj = Instantiate(Global.TimerPrefab);
+        DesireTimer = obj.GetComponent<Timer>();
+        DesireTimer.StartTimer(UnityEngine.Random.Range(10, 30), transform, 2, HandleOnTimerComplete);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -36,6 +42,7 @@ public class God : MonoBehaviour
             Destroy(OrderBubble);
             LevelManager.GodOrderDelivered();
             Destroy(collision.gameObject);
+            ResetDesiredFood();
         }
     }
 
@@ -45,9 +52,17 @@ public class God : MonoBehaviour
         OrderBubble = orderBubble;
     }
 
+    public void ResetDesiredFood()
+    {
+        MakeTimer();
+        SpawnManager.Instance.ResetFoodEvent.Invoke(gameObject);
+    }
+
     void HandleOnTimerComplete()
     {
         Debug.Log("GOD DISPLEASED!");
+        Destroy(OrderBubble);
         LevelManager.GodOrderFailed();
+        ResetDesiredFood();
     }
 }

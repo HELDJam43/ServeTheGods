@@ -7,6 +7,10 @@ public class MyIntEvent : UnityEvent<GameObject>
 {
 }
 
+public class MyEmptyEvent : UnityEvent<GameObject>
+{
+}
+
 public class SpawnManager : MonoBehaviour {
 
     #region Prefab References
@@ -31,6 +35,7 @@ public class SpawnManager : MonoBehaviour {
 
     public static SpawnManager Instance;
     public MyIntEvent DespawnEvent;
+    public MyEmptyEvent ResetFoodEvent;
     // Use this for initialization
     void Awake () {
         Instance = this;
@@ -44,7 +49,11 @@ public class SpawnManager : MonoBehaviour {
         if (DespawnEvent == null)
             DespawnEvent = new MyIntEvent();
 
+        if (ResetFoodEvent == null)
+            ResetFoodEvent = new MyEmptyEvent();
+
         DespawnEvent.AddListener(DespawnSomething);
+        ResetFoodEvent.AddListener(ResetFood);
     }
 
     void ScoreAdd(int num)
@@ -157,5 +166,14 @@ public class SpawnManager : MonoBehaviour {
       
         foodType.GetComponentInChildren<MeshFilter>().sharedMesh = selectedFood.foodMesh;
         return newOrderBubble;
+    }
+
+    private void ResetFood(GameObject go)
+    {
+        God script = go.GetComponent<God>();
+        Food selectedFood = FoodManager.GetRandomGodFood();
+        GameObject orderBubble = SpawnOrderBubble(selectedFood, go);
+        orderBubble.transform.position = new Vector3(orderBubble.transform.position.x + 0.5f, orderBubble.transform.position.y, orderBubble.transform.position.z - 0.7f);
+        script.SetDesiredFood(selectedFood, orderBubble);
     }
 }
