@@ -65,7 +65,7 @@ public class SpawnManager : MonoBehaviour
 
         for (int i = 0; i < level._customerInitialCount; i++)
         {
-            SpawnInitialCustomers();
+            SpawnInitialCustomers(true);
         }
 
         for (int j = 0; j < level._foodInitialCount; j++)
@@ -142,7 +142,7 @@ public class SpawnManager : MonoBehaviour
         _inventory.SetGodChairSlotNum(godSpawnLocations.Length);
     }
 
-    private void SpawnInitialCustomers()
+    private void SpawnInitialCustomers(bool isInitial)
     {
         _custermerSpawnWaiting = false;
         if (_inventory.ChairSlotOpen() && _currentCustomerCount < _level._customerTotalCount)
@@ -155,7 +155,7 @@ public class SpawnManager : MonoBehaviour
             //newCustomerObj.transform.name = newCustomer.Behavior.GetType().ToString();
 
             int slot = _inventory.TakeChairSlot(newCustomerObj);
-            newCustomer.WalkToInitialLocation(Waypoints.Waypoint.ClosestWaypointTo(customerSpawnLocations[slot].transform.position));
+            newCustomer.WalkToInitialLocation(Waypoints.Waypoint.ClosestWaypointTo(customerSpawnLocations[slot].transform.position), isInitial);
         }
     }
     private void SpawnCustomers()

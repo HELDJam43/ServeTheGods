@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_STANDALONE_WIN
 using XInputDotNetPure;
+#endif
 public class ControllerHandler : MonoBehaviour {
     public GameObject xboxPrefab, pcPrefab;
-    public GameObject currentController; 
-
+    public GameObject currentController;
+#if UNITY_STANDALONE_WIN
     GamePadState state;
+#endif
     public static bool usingController=false;
     public delegate void OnControllerChangedEvent();
     public static OnControllerChangedEvent OnControllerChanged;
@@ -14,7 +17,7 @@ public class ControllerHandler : MonoBehaviour {
     void Awake () {
         UsePC();
 	}
-#if !UNITY_STANDALONE_OSX && !UNITY_EDITOR_OSX
+#if UNITY_STANDALONE_WIN
     // Update is called once per frame
     void Update () {
        

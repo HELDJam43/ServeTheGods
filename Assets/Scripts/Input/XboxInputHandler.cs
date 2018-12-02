@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_STANDALONE_WIN
 using XInputDotNetPure;
+#endif
 public class XboxInputHandler : InputHandler
 {
+#if UNITY_STANDALONE_WIN
     bool playerIndexSet = false;
     PlayerIndex playerIndex;
     GamePadState state;
@@ -376,4 +379,5 @@ public class XboxInputHandler : InputHandler
         base.StopVibration();
         GamePad.SetVibration(playerIndex, 0, 0);
     }
+#endif
 }
