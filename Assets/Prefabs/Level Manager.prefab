@@ -68,3 +68,5 @@ MonoBehaviour:
   transparentImage: {fileID: 0}
   timerPrefab: {fileID: 1176609387091884, guid: f1c52e9e07354914db4bc8c4be0a4670,
     type: 2}
+  entranceWaypoint: {fileID: 0}
+  ashes: {fileID: 11400000, guid: 2b1b7f9af385f0b438e3e8be69696c12, type: 2}
