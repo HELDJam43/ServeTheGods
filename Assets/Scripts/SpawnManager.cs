@@ -126,9 +126,12 @@ public class SpawnManager : MonoBehaviour {
 
             int slot = _inventory.TakeGodChairSlot(newGodObj);
             newGodObj.transform.position = godSpawnLocations[slot].transform.position;
+            newGodObj.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
 
-            //Food selectedFood = FoodManager.GetRandomFood();
-            //newCustomer.SetDesiredFood(selectedFood, SpawnOrderBubble(selectedFood, newCustomerObj));
+            Food selectedFood = FoodManager.GetRandomFood();
+            //newGodObj.SetDesiredFood(selectedFood, SpawnOrderBubble(selectedFood, newCustomerObj));
+            GameObject orderBubble = SpawnOrderBubble(selectedFood, newGodObj);
+            orderBubble.transform.position = new Vector3(orderBubble.transform.position.x + 0.5f, orderBubble.transform.position.y, orderBubble.transform.position.z - 0.7f);
         }
     }
 
