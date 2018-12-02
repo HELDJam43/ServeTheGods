@@ -30,7 +30,7 @@ public class God : MonoBehaviour
     {
         GameObject obj = Instantiate(Global.TimerPrefab);
         DesireTimer = obj.GetComponent<Timer>();
-        DesireTimer.StartTimer(UnityEngine.Random.Range(10, 30), transform, 2, HandleOnTimerComplete);
+        DesireTimer.StartTimer(UnityEngine.Random.Range(50, 100), transform, 2, HandleOnTimerComplete);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -38,7 +38,6 @@ public class God : MonoBehaviour
         if (collision.collider.name.Contains(DesiredFood.name.ToLower()))
         {
             //TODO MORE here instead of just getting rid of bubble
-            Debug.Log("NUM NUM");
             Destroy(OrderBubble);
             LevelManager.GodOrderDelivered();
             Destroy(collision.gameObject);
