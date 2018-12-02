@@ -107,12 +107,12 @@ public class SpawnManager : MonoBehaviour {
             Customer newCustomer = newCustomerObj.AddComponent<Customer>();
             newCustomer.AssignRandomBehavior();
             newCustomerObj.transform.parent = _customersInHierarchy.transform;
-            newCustomerObj.transform.name = newCustomer.Behavior.GetType().ToString();
+            //newCustomerObj.transform.name = newCustomer.Behavior.GetType().ToString();
 
             int slot = _inventory.TakeChairSlot(newCustomerObj);
             newCustomerObj.transform.position = customerSpawnLocations[slot].transform.position;
 
-            Food selectedFood = FoodManager.GetRandomFood();
+            Food selectedFood = FoodManager.GetRandomCustomerFood();
             newCustomer.SetDesiredFood(selectedFood,SpawnOrderBubble(selectedFood,newCustomerObj));
         }
     }
@@ -122,19 +122,17 @@ public class SpawnManager : MonoBehaviour {
         if (_inventory.GodChairSlotOpen())
         {
             GameObject newGodObj = Instantiate(_godPrefabs[UnityEngine.Random.Range(0, _godPrefabs.Length)]);
-            //Customer newCustomer = newCustomerObj.AddComponent<Customer>();
-            //newCustomer.AssignRandomBehavior();
-            //newCustomerObj.transform.parent = _customersInHierarchy.transform;
-            //newCustomerObj.transform.name = newCustomer.Behavior.GetType().ToString();
+            God newGod = newGodObj.AddComponent<God>();
+            newGodObj.transform.parent = _godsInHierarchy.transform;
 
             int slot = _inventory.TakeGodChairSlot(newGodObj);
             newGodObj.transform.position = godSpawnLocations[slot].transform.position;
             newGodObj.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
 
-            Food selectedFood = FoodManager.GetRandomFood();
-            //newGodObj.SetDesiredFood(selectedFood, SpawnOrderBubble(selectedFood, newCustomerObj));
+            Food selectedFood = FoodManager.GetRandomGodFood();
             GameObject orderBubble = SpawnOrderBubble(selectedFood, newGodObj);
             orderBubble.transform.position = new Vector3(orderBubble.transform.position.x + 0.5f, orderBubble.transform.position.y, orderBubble.transform.position.z - 0.7f);
+            newGod.SetDesiredFood(selectedFood,orderBubble);
         }
     }
 
