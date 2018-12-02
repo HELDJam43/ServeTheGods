@@ -6,7 +6,7 @@ public class SpawnInventory
 
     public Dictionary<int, GameObject> _foodSlot = new Dictionary<int, GameObject>();
     public Dictionary<int, GameObject> _chairSlot = new Dictionary<int, GameObject>();
-
+    public Dictionary<int, GameObject> _godChairSlot = new Dictionary<int, GameObject>();
 
     public void FreeAllSlots()
     {
@@ -19,6 +19,14 @@ public class SpawnInventory
         }
 
         foreach (KeyValuePair<int, GameObject> objs in _chairSlot)
+        {
+            if (objs.Value != null)
+            {
+                GameObject.Destroy(objs.Value);
+            }
+        }
+
+        foreach (KeyValuePair<int, GameObject> objs in _godChairSlot)
         {
             if (objs.Value != null)
             {
@@ -142,6 +150,66 @@ public class SpawnInventory
         if (slot != -1)
         {
            _chairSlot[slot] = chairGO;
+        }
+
+        return slot;
+    }
+
+    public void SetGodChairSlotNum(int num)
+    {
+        for (int i = 0; i < num; i++)
+        {
+            if (!_godChairSlot.ContainsKey(i))
+                _godChairSlot.Add(i, null);
+        }
+    }
+
+    public bool GodChairSlotOpen()
+    {
+
+        foreach (KeyValuePair<int, GameObject> objs in _godChairSlot)
+        {
+            if (objs.Value == null)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void FreeGodChairSlot(GameObject go)
+    {
+        int slot = -1;
+        foreach (KeyValuePair<int, GameObject> objs in _godChairSlot)
+        {
+            if (objs.Value == go)
+            {
+                slot = objs.Key;
+
+            }
+        }
+
+        if (slot != -1)
+        {
+            _godChairSlot[slot] = null;
+        }
+    }
+
+    public int TakeGodChairSlot(GameObject chairGO)
+    {
+        int slot = -1;
+
+        foreach (KeyValuePair<int, GameObject> objs in _godChairSlot)
+        {
+            if (objs.Value == null)
+            {
+                slot = objs.Key;
+            }
+        }
+
+        if (slot != -1)
+        {
+            _godChairSlot[slot] = chairGO;
         }
 
         return slot;

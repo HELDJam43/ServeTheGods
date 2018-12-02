@@ -9,7 +9,7 @@ public class MyIntEvent : UnityEvent<GameObject>
 
 public class SpawnManager : MonoBehaviour {
 
-    //Prefab references
+    #region Prefab References
     //Customers
     public GameObject _customersInHierarchy;
     public GameObject[] _customerPrefabs = { null, null, null, null };
@@ -18,8 +18,13 @@ public class SpawnManager : MonoBehaviour {
     public GameObject _foodInHierarchy;
     public GameObject[] _foodPrefabs = { null, null, null, null, null, null };
     public GameObject[] foodSpawnLocations = { null, null, null };
+    //Gods
+    public GameObject _godsInHierarchy;
+    public GameObject[] _godPrefabs = { null, null, null, null, null};
+    public GameObject[] godSpawnLocations = { null, null, null };
     //Order Bubble
     public GameObject _orderPrefab;
+    #endregion
 
     public int CustomerRespawnRate = 3;
     public int FoodRespawnRate = 2;
@@ -31,6 +36,7 @@ public class SpawnManager : MonoBehaviour {
         Instance = this;
         _inventory.SetChairSlotNum(customerSpawnLocations.Length);
         _inventory.SetFoodSlotNum(foodSpawnLocations.Length);
+        _inventory.SetGodChairSlotNum(godSpawnLocations.Length);
     }
 
     private void Start()
@@ -50,6 +56,7 @@ public class SpawnManager : MonoBehaviour {
     void Update () {
         SpawnInitialCustomers();
         SpawnInitialFood();
+        SpawnInitialGods();
 
         if (Input.GetKeyUp(KeyCode.R))
         {
@@ -86,6 +93,7 @@ public class SpawnManager : MonoBehaviour {
         _inventory.FreeAllSlots();
         _inventory.SetChairSlotNum(customerSpawnLocations.Length);
         _inventory.SetFoodSlotNum(foodSpawnLocations.Length);
+        _inventory.SetGodChairSlotNum(godSpawnLocations.Length);
     }
 
     private void SpawnInitialCustomers()
@@ -103,6 +111,24 @@ public class SpawnManager : MonoBehaviour {
 
             Food selectedFood = FoodManager.GetRandomFood();
             newCustomer.SetDesiredFood(selectedFood,SpawnOrderBubble(selectedFood,newCustomerObj));
+        }
+    }
+
+    private void SpawnInitialGods()
+    {
+        if (_inventory.GodChairSlotOpen())
+        {
+            GameObject newGodObj = Instantiate(_godPrefabs[UnityEngine.Random.Range(0, _godPrefabs.Length)]);
+            //Customer newCustomer = newCustomerObj.AddComponent<Customer>();
+            //newCustomer.AssignRandomBehavior();
+            //newCustomerObj.transform.parent = _customersInHierarchy.transform;
+            //newCustomerObj.transform.name = newCustomer.Behavior.GetType().ToString();
+
+            int slot = _inventory.TakeGodChairSlot(newGodObj);
+            newGodObj.transform.position = godSpawnLocations[slot].transform.position;
+
+            //Food selectedFood = FoodManager.GetRandomFood();
+            //newCustomer.SetDesiredFood(selectedFood, SpawnOrderBubble(selectedFood, newCustomerObj));
         }
     }
 

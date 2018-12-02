@@ -11,6 +11,36 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1240809782572676}
   m_IsPrefabAsset: 1
+--- !u!1 &1159808789921898
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4034221659666396}
+  m_Layer: 0
+  m_Name: Counter2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1229480914220970
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4715064925230376}
+  m_Layer: 0
+  m_Name: Counter1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1240809782572676
 GameObject:
   m_ObjectHideFlags: 0
@@ -36,7 +66,22 @@ GameObject:
   m_Component:
   - component: {fileID: 4835919212144188}
   m_Layer: 0
-  m_Name: Counter1
+  m_Name: GodChair1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1415263895315018
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4981169894401146}
+  m_Layer: 0
+  m_Name: Counter3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,7 +96,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4410866109335758}
   m_Layer: 0
-  m_Name: Points
+  m_Name: GodPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4544059707193616}
   m_Layer: 0
-  m_Name: Counter3
+  m_Name: GodChair3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,7 +126,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4390726679416476}
   m_Layer: 0
-  m_Name: Counter2
+  m_Name: GodChair2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,6 +147,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1882748276383218
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4663414630734400}
+  m_Layer: 0
+  m_Name: God
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1913574011283030
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,6 +177,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1962493245051030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4631734614775628}
+  m_Layer: 0
+  m_Name: Points
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4034221659666396
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1159808789921898}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.46, y: 1.59, z: -7.84}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4631734614775628}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4390726679416476
 Transform:
   m_ObjectHideFlags: 1
@@ -124,7 +212,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1716137765461036}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.46, y: 1.59, z: -7.84}
+  m_LocalPosition: {x: -8, y: 1, z: -2.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4410866109335758}
@@ -136,7 +224,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1417403826282350}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -144,7 +232,7 @@ Transform:
   - {fileID: 4390726679416476}
   - {fileID: 4544059707193616}
   m_Father: {fileID: 4922071963694470}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4544059707193616
 Transform:
@@ -153,11 +241,53 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1670141865945564}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.79999995, y: 2.39, z: 1.69}
+  m_LocalPosition: {x: -8, y: 1, z: 1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4410866109335758}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4631734614775628
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1962493245051030}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4715064925230376}
+  - {fileID: 4034221659666396}
+  - {fileID: 4981169894401146}
+  m_Father: {fileID: 4922071963694470}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4663414630734400
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1882748276383218}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4922071963694470}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4715064925230376
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1229480914220970}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.86, y: 1.36, z: -11.85}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4631734614775628}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4805371425966178
 Transform:
@@ -179,7 +309,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1409286512634734}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.86, y: 1.36, z: -11.85}
+  m_LocalPosition: {x: -8, y: 1, z: -7.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4410866109335758}
@@ -208,11 +338,26 @@ Transform:
   m_LocalPosition: {x: -1.8064432, y: -0.29170132, z: 2.9681673}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4410866109335758}
+  - {fileID: 4631734614775628}
   - {fileID: 4905091017697504}
   - {fileID: 4805371425966178}
+  - {fileID: 4663414630734400}
+  - {fileID: 4410866109335758}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4981169894401146
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1415263895315018}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.79999995, y: 2.39, z: 1.69}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4631734614775628}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114610377065342032
 MonoBehaviour:
@@ -245,8 +390,21 @@ MonoBehaviour:
   - {fileID: 1260015570022284, guid: 8528ee2e2a0270f4bb8b467a67363cde, type: 2}
   - {fileID: 1640349342202956, guid: 9480a9ea51a1e384f94327d38118d283, type: 2}
   foodSpawnLocations:
+  - {fileID: 1229480914220970}
+  - {fileID: 1159808789921898}
+  - {fileID: 1415263895315018}
+  _godsInHierarchy: {fileID: 1882748276383218}
+  _godPrefabs:
+  - {fileID: 1015695684092254, guid: 2eed57b5d4a559c4f87ee60a94d7f6ef, type: 2}
+  - {fileID: 1803644093437350, guid: 537fda268fbe33844ab00dc2145025b8, type: 2}
+  - {fileID: 1603649355589854, guid: 2f29691689a00a044b93313653f8588c, type: 2}
+  - {fileID: 1905779948141860, guid: 604978050a7388b45be1c9e402762d5e, type: 2}
+  - {fileID: 1197134748912696, guid: 79851234518af514c9e240e5b2b8e4a5, type: 2}
+  godSpawnLocations:
   - {fileID: 1409286512634734}
   - {fileID: 1716137765461036}
   - {fileID: 1670141865945564}
   _orderPrefab: {fileID: 1152759490948680, guid: 08a742c5ab2a66b47bbea799637f4e58,
     type: 2}
+  CustomerRespawnRate: 3
+  FoodRespawnRate: 2
