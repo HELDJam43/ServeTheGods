@@ -14,6 +14,7 @@ public static class GameStateManager
         CINEMA,
         TUTORIAL,
         GAMEOVER,
+        NEXTLEVEL,
         STARTSCREEN,
         ANY
     }
@@ -72,6 +73,10 @@ public static class GameStateManager
                 AudioListener.pause = true;
                 break;
             case GameState.GAMEOVER:
+                Time.timeScale = 1;
+                AudioListener.pause = true;
+                break;
+            case GameState.NEXTLEVEL:
                 Time.timeScale = 1;
                 AudioListener.pause = true;
                 break;
