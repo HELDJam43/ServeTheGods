@@ -37,6 +37,7 @@ public class Customer : MonoBehaviour
             }
             if (state != AIState.HELD)
             {
+                Destroy(OrderBubble);
                 state = AIState.HELD;
                 if (wm)
                     wm.StopMoving(true);
