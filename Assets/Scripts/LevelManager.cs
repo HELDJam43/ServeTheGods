@@ -151,7 +151,7 @@ public class LevelManager : MonoBehaviour
         CanvasGroup c = ui.GetComponent<CanvasGroup>();
         while (t < duration)
         {
-            c.alpha = Mathf.Lerp(0, .9f, t / duration);
+            c.alpha = Mathf.Lerp(0, 1, t / duration);
             t += Time.deltaTime;
             yield return null;
         }
