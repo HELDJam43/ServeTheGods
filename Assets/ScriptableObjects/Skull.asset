@@ -14,3 +14,5 @@ MonoBehaviour:
   foodName: Skull
   foodPrefab: {fileID: 1260015570022284, guid: 8528ee2e2a0270f4bb8b467a67363cde, type: 2}
   foodMesh: {fileID: 4300000, guid: 5c5130b87676fca428291fd93b86ea67, type: 3}
+  friendlyNames:
+  - skull

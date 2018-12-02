@@ -14,3 +14,5 @@ MonoBehaviour:
   foodName: Tomato
   foodPrefab: {fileID: 1640349342202956, guid: 9480a9ea51a1e384f94327d38118d283, type: 2}
   foodMesh: {fileID: 4300000, guid: cc6e1640372ae7748a944ba9c7acd64c, type: 3}
+  friendlyNames:
+  - tomato

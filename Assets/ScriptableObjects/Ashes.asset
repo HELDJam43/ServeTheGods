@@ -14,3 +14,5 @@ MonoBehaviour:
   foodName: Ashes
   foodPrefab: {fileID: 1594843848470922, guid: b565394b46bc66040bac0e771bd4e644, type: 2}
   foodMesh: {fileID: 4300000, guid: 175762377a1997c44ba11cd08676a6fe, type: 3}
+  friendlyNames:
+  - ashes

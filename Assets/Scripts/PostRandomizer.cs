@@ -6,7 +6,7 @@ using TMPro;
 
 public class PostRandomizer : MonoBehaviour {
 
-    public float lifeTime = 3;
+    public float lifeTime = 6;
     public float fastDistance = 0;
 
     public Gradient darkColors;

@@ -14,3 +14,6 @@ MonoBehaviour:
   foodName: GrilledChz
   foodPrefab: {fileID: 1288992473912014, guid: b0ffbbf7b6f134f4e98b268f3005eef6, type: 2}
   foodMesh: {fileID: 4300000, guid: a6559fd8f331f624e8400ac331670c90, type: 3}
+  friendlyNames:
+  - grilled cheese
+  - grilled cheese sandwich

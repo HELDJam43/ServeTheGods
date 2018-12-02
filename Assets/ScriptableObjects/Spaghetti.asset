@@ -14,3 +14,9 @@ MonoBehaviour:
   foodName: Spaghetti
   foodPrefab: {fileID: 1002306696097390, guid: 672973c5c55b25849baa7b971f5d8d68, type: 2}
   foodMesh: {fileID: 4300000, guid: d1dfdb05962d87441908e65a3ccb71d8, type: 3}
+  friendlyNames:
+  - spaghetti
+  - pasta
+  - tomato pasta
+  - pasta with tomato sauce
+  - tomato sauce

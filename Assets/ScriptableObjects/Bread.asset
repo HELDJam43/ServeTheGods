@@ -14,3 +14,8 @@ MonoBehaviour:
   foodName: Bread
   foodPrefab: {fileID: 1263237145295164, guid: 0058a9429f95eee4887bb386da6f3f55, type: 2}
   foodMesh: {fileID: 4300000, guid: 5328dc28d795b2c4a967d4931a3d6556, type: 3}
+  friendlyNames:
+  - bread
+  - loaf
+  - roll
+  - bread

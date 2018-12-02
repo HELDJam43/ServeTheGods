@@ -14,3 +14,8 @@ MonoBehaviour:
   foodName: Burger
   foodPrefab: {fileID: 1183353628736842, guid: f2b161da83a4aa749b794931c07546d7, type: 2}
   foodMesh: {fileID: 4300000, guid: f639109c404467e4194cdf7cbddbedbf, type: 3}
+  friendlyNames:
+  - burger
+  - cheeseburger
+  - hamburger
+  - burg

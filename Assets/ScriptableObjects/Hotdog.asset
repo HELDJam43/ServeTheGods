@@ -14,3 +14,7 @@ MonoBehaviour:
   foodName: Hotdog
   foodPrefab: {fileID: 1974347726225006, guid: c7ebc0d6902c80f45a85b35a83afee0e, type: 2}
   foodMesh: {fileID: 4300000, guid: f0642be8d7043104780ed8847d37e112, type: 3}
+  friendlyNames:
+  - hotdog
+  - sausage
+  - dog

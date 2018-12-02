@@ -14,3 +14,9 @@ MonoBehaviour:
   foodName: Steak
   foodPrefab: {fileID: 1373289128411104, guid: 1e8b2cf949d40e14ba1095a83af9e490, type: 2}
   foodMesh: {fileID: 4300000, guid: 47031555a046eb043b770e243e321125, type: 3}
+  friendlyNames:
+  - steak
+  - beef
+  - filet mignon
+  - sirloin
+  - grilled steak

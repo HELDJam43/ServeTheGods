@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PostManager : MonoBehaviour {
 
+    public static PostManager INSTANCE;
+
     public GameObject postPrefab;
 
     List<PostRandomizer> posts;
@@ -13,7 +15,9 @@ public class PostManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         posts = new List<PostRandomizer>();
-	}
+        INSTANCE = this;
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -23,6 +27,7 @@ public class PostManager : MonoBehaviour {
             MAKEPOST = false;
         }*/
 
+        List<PostRandomizer> deletePosts = new List<PostRandomizer>();
 		foreach(PostRandomizer p in posts)
         {
             p.transform.position = p.transform.position + new Vector3(0, -fallSpeed * Time.deltaTime, 0);
@@ -41,16 +46,20 @@ public class PostManager : MonoBehaviour {
             p.lifeTime -= Time.deltaTime;
             if (p.lifeTime <= 0)
             {
-                posts.Remove(p);
-                Destroy(p.gameObject);
+                deletePosts.Add(p); 
             }
+        }
+        foreach(PostRandomizer p in deletePosts)
+        {
+            posts.Remove(p);
+            Destroy(p.gameObject);
         }
 	}
 
     public void MakePost(PostRandomizer.RatingType rating, string food)
     {
         PostRandomizer post = GameObject.Instantiate(postPrefab).GetComponent<PostRandomizer>();
-        post.transform.parent = this.transform;
+        post.transform.SetParent(this.transform);
         post.GetComponent<RectTransform>().localPosition = Vector3.zero;
         post.Randomize(rating, food);
         float fastfallDistance = 0;

@@ -14,3 +14,8 @@ MonoBehaviour:
   foodName: Salsa
   foodPrefab: {fileID: 1490818979221672, guid: eff6eb9ce0354de488de67350f61a59c, type: 2}
   foodMesh: {fileID: 4300000, guid: 81a30df41418a9f4d91b7d54f4a167e4, type: 3}
+  friendlyNames:
+  - salsa
+  - chips
+  - chips and salsa
+  - salsa plate

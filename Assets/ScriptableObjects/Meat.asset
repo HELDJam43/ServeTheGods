@@ -14,3 +14,7 @@ MonoBehaviour:
   foodName: Meat
   foodPrefab: {fileID: 1441367189205574, guid: e06db1ec1488219478400e19394fa3c0, type: 2}
   foodMesh: {fileID: 4300000, guid: ea67002794397b14e862a47a9723ea14, type: 3}
+  friendlyNames:
+  - meat
+  - meat stick
+  - meat on the bone

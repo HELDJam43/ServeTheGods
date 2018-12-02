@@ -15,6 +15,8 @@ public class Customer : MonoBehaviour
     private WaypointMovement wm;
     AIState state = AIState.WAITING;
 
+    string eatenFood = "hungry";
+
     public enum AIState
     {
         WAITING,
@@ -54,8 +56,10 @@ public class Customer : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (state != AIState.WAITING) return;
-        if (collision.collider.name.Contains(DesiredFood.name.ToLower()))
+        FoodWorldObject collidedFood = collision.collider.GetComponent<FoodWorldObject>();
+        if (collidedFood != null && collidedFood.Food.foodName.ToLower() == DesiredFood.foodName.ToLower())
         {
+            eatenFood = DesiredFood.friendlyNames[UnityEngine.Random.Range(0, DesiredFood.friendlyNames.Length)];
             //TODO MORE here instead of just getting rid of bubble
             Destroy(OrderBubble);
             Destroy(collision.gameObject);
@@ -77,6 +81,7 @@ public class Customer : MonoBehaviour
             wm = gameObject.AddComponent<WaypointMovement>();
         wm.StartMoving(null, Global.EntranceWaypoint, Despawn, OnLeave, 0.05f);
         state = AIState.LEAVING;
+        PostManager.INSTANCE.MakePost(PostRandomizer.RatingType.Fed, eatenFood);
     }
     void OnScared()
     {

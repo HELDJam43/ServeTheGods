@@ -14,3 +14,8 @@ MonoBehaviour:
   foodName: Sandwich
   foodPrefab: {fileID: 1069080149236994, guid: 055bb067d91e69c4984a607b7fcdc51b, type: 2}
   foodMesh: {fileID: 4300000, guid: b6e337ad31167e14aaba2ce2dae12130, type: 3}
+  friendlyNames:
+  - sandwich
+  - ham sandwich
+  - cheese sandwich
+  - ham and cheese sandwich

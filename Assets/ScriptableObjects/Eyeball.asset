@@ -14,3 +14,5 @@ MonoBehaviour:
   foodName: Eyeball
   foodPrefab: {fileID: 1424825676044452, guid: 381a59400ecf2a94397ec49ad915cc94, type: 2}
   foodMesh: {fileID: 4300000, guid: 152f684af09a5e1499a6bafb002177a4, type: 3}
+  friendlyNames:
+  - eyeball

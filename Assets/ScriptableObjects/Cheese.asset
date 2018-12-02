@@ -14,3 +14,8 @@ MonoBehaviour:
   foodName: Cheese
   foodPrefab: {fileID: 1022184793735252, guid: 9968bd171343ba742bab9d6b7b3580de, type: 2}
   foodMesh: {fileID: 4300000, guid: ce6ffe2a0f18e534a91c7be4536643c8, type: 3}
+  friendlyNames:
+  - cheese
+  - cheese block
+  - block of cheese
+  - cheddar
