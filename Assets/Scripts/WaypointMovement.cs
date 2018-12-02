@@ -14,7 +14,8 @@ public class WaypointMovement : MonoBehaviour
     WaypointEvent onReachFirstWaypoint, onReachLastWaypoint;
     int size;
     bool wasKinematic = false;
-    public void StartMoving(Waypoint start, Waypoint end,WaypointEvent firstEvent,WaypointEvent lastEvent)
+    Coroutine co;
+    public void StartMoving(Waypoint start, Waypoint end, WaypointEvent firstEvent, WaypointEvent lastEvent, float delay)
     {
         rBody = GetComponent<Rigidbody>();
         wasKinematic = rBody.isKinematic;
@@ -23,23 +24,37 @@ public class WaypointMovement : MonoBehaviour
             start = Waypoint.ClosestWaypointTo(transform.position);
         currentPath = Waypoint.CreatePath(start, end);
         size = currentPath.Size;
-        updateMove = true;
+        updateMove = false;
+        if (co != null)
+            StopCoroutine(co);
+
+        co = StartCoroutine(ActuallyStartMoving(delay));
+
         onReachFirstWaypoint = firstEvent;
         onReachLastWaypoint = lastEvent;
     }
-
-    public void StopMoving()
+    IEnumerator ActuallyStartMoving(float time)
     {
+        yield return new WaitForSeconds(time);
+        updateMove = true;
+        co = null;
+    }
+    public void StopMoving(bool ignoreKinematic)
+    {
+        if (co != null)
+            StopCoroutine(co);
+
         updateMove = false;
         rBody.velocity = Vector3.zero;
-        rBody.isKinematic = wasKinematic;
+        if (!ignoreKinematic)
+            rBody.isKinematic = wasKinematic;
     }
     void Update()
     {
         if (!updateMove) return;
         if (currentPath.IsEmpty())
         {
-            StopMoving();
+            StopMoving(false);
             return;
         }
         Waypoint target = currentPath.Peek();

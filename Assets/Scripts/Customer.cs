@@ -12,7 +12,7 @@ public class Customer : MonoBehaviour
 
     private Vector3 wayPoint;
     private Timer eatingTimer;
-
+    private WaypointMovement wm;
     AIState state = AIState.WAITING;
 
     public enum AIState
@@ -35,8 +35,12 @@ public class Customer : MonoBehaviour
             {
                 eatingTimer.StopTimer();
             }
-        
-            state = AIState.HELD;
+            if (state != AIState.HELD)
+            {
+                state = AIState.HELD;
+                if (wm)
+                    wm.StopMoving(true);
+            }
         }
         else
             if (state == AIState.HELD && transform.position.y < .3f)
@@ -68,14 +72,16 @@ public class Customer : MonoBehaviour
     }
     void OnFinisheEating()
     {
-        WaypointMovement wm = gameObject.AddComponent<WaypointMovement>();
-        wm.StartMoving(null, Global.EntranceWaypoint, Despawn, null);
+        if (wm == null)
+            wm = gameObject.AddComponent<WaypointMovement>();
+        wm.StartMoving(null, Global.EntranceWaypoint, Despawn, null, 0.05f);
         state = AIState.LEAVING;
     }
     void OnScared()
     {
-        WaypointMovement wm = gameObject.AddComponent<WaypointMovement>();
-        wm.StartMoving(null, Global.EntranceWaypoint, Despawn, null);
+        if (wm == null)
+            wm = gameObject.AddComponent<WaypointMovement>();
+        wm.StartMoving(null, Global.EntranceWaypoint, Despawn, null, 1);
         state = AIState.SCARED;
     }
     void Despawn()
