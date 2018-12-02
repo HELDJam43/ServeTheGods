@@ -60,7 +60,6 @@ public class God : MonoBehaviour
 
     void HandleOnTimerComplete()
     {
-        Debug.Log("GOD DISPLEASED!");
         Destroy(OrderBubble);
         LevelManager.GodOrderFailed();
         ResetDesiredFood();
