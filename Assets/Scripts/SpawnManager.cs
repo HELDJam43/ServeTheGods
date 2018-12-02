@@ -158,11 +158,30 @@ public class SpawnManager : MonoBehaviour
             newCustomer.WalkToInitialLocation(Waypoints.Waypoint.ClosestWaypointTo(customerSpawnLocations[slot].transform.position), isInitial);
         }
     }
+
+
+    private void SpawnC()
+    {
+        _custermerSpawnWaiting = false;
+        if (_inventory.ChairSlotOpen() && _currentCustomerCount < _level._customerTotalCount)
+        {
+            _currentCustomerCount++;
+            GameObject newCustomerObj = Instantiate(_customerPrefabs[UnityEngine.Random.Range(0, _customerPrefabs.Length)]);
+            Customer newCustomer = newCustomerObj.AddComponent<Customer>();
+            newCustomer.AssignRandomBehavior();
+            newCustomerObj.transform.parent = _customersInHierarchy.transform;
+            //newCustomerObj.transform.name = newCustomer.Behavior.GetType().ToString();
+
+            int slot = _inventory.TakeChairSlot(newCustomerObj);
+            newCustomer.WalkToInitialLocation(Waypoints.Waypoint.ClosestWaypointTo(customerSpawnLocations[slot].transform.position), false);
+        }
+    }
+
     private void SpawnCustomers()
     {
         if (_custermerSpawnWaiting) return;
         _custermerSpawnWaiting = true;
-        Invoke("SpawnInitialCustomers", _level._customerSpawnRate);
+        Invoke("SpawnC", _level._customerSpawnRate);
     }
 
     private void SpawnInitialGods()
