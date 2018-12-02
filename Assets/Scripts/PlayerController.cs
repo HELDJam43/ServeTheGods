@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     public float acceleration = 10;
     Vector3 input;
     public Animator animator;
+    float inputAngle = 0;
+    static float ROTATIONSPEED = 4;
     // Use this for initialization
     void Start()
     {
@@ -31,14 +33,28 @@ public class PlayerController : MonoBehaviour
         {
             input.Normalize();
         }
-        if (rBody.velocity.magnitude > 0)
-        {
-            transform.forward = rBody.velocity;
-        }
+        
         animator.SetFloat("WalkSpeed", Mathf.Abs(rBody.velocity.magnitude / speed));
     }
     void FixedUpdate()
     {
+        if (input.magnitude > 0)
+        {
+            float desiredAngle = Mathf.Atan2(input.z, input.x);
+            desiredAngle = (desiredAngle + Mathf.PI * 2) % (Mathf.PI * 2);
+            float angleDelta = -Mathf.DeltaAngle(desiredAngle, inputAngle);
+            if(Mathf.Abs(angleDelta) > Mathf.PI * .7f || Mathf.Abs(angleDelta) < Mathf.PI * ROTATIONSPEED * Time.fixedDeltaTime)
+            {
+                inputAngle = desiredAngle;
+            } else
+            {
+                inputAngle = inputAngle + Mathf.Sign(angleDelta) * ROTATIONSPEED * Mathf.PI * Time.fixedDeltaTime;
+            }
+
+            input = new Vector3(Mathf.Cos(inputAngle), 0, Mathf.Sin(inputAngle));
+            transform.forward = input;
+        }
+
         //Vector3 targetPos = transform.position;
         //targetPos += (input * speed * Time.deltaTime);
         //rBody.MovePosition(targetPos);
