@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody rBody;
     float speed = 400;
     Vector3 input;
+    public Animator animator;
     // Use this for initialization
     void Start()
     {
@@ -24,9 +25,16 @@ public class PlayerController : MonoBehaviour
         camRight.y = 0;
         Vector3 camForward = Camera.main.transform.up * ActionSystem.GetActionAxis(ActionSystem.MOVEAXIS_Y);
         camForward.y = 0;
-        input = camRight.normalized + camForward.normalized;
+        input = (camRight + camForward);
+        if(input.magnitude > 1)
+        {
+            input.Normalize();
+        }
         if (input.magnitude > 0)
+        {
             transform.forward = input;
+        }
+        animator.SetFloat("WalkSpeed", input.magnitude);
     }
     void FixedUpdate()
     {
