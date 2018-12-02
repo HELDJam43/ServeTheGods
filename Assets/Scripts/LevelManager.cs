@@ -97,7 +97,7 @@ public class LevelManager : MonoBehaviour
     public static void CustomerOrderDelivered()
     {
         if (GameStateManager.State == GameStateManager.GameState.GAMEOVER) return;
-        Instance.reviewRank += (10 * Instance.level._scoreMultiplier);
+        Instance.reviewRank += Instance.level._scoreAdditive;
         Instance.hud.SetReviewValue(Instance.CalcStars());
     }
     public int CalcStars()
