@@ -6,7 +6,7 @@ public class PickupHandler : MonoBehaviour
 {
     PickupAble currentObject = null;
     Transform pickupLocation, heldLocation;
-    float throwForce = 150;
+    float throwForce = 250;
     float pickRadius = .75f;
     Rigidbody rBody;
     public Transform PickupLocation
@@ -78,20 +78,19 @@ public class PickupHandler : MonoBehaviour
     void Drop(Transform pos)
     {
         currentObject.Col.enabled = true;
-        currentObject.Release();        
+        currentObject.Release();
         Vector3 camRight = Camera.main.transform.right * ActionSystem.GetActionAxis(ActionSystem.MOVEAXIS_X);
         camRight.y = 0;
         Vector3 camForward = Camera.main.transform.up * ActionSystem.GetActionAxis(ActionSystem.MOVEAXIS_Y);
         camForward.y = 0;
         Vector3 input = (camRight + camForward);
-        if (input.magnitude > 1)
-        {
-            input.Normalize();
-        }
+
         if (input.magnitude <= 0.1f)
         {
             input = transform.forward;
         }
+        else
+            input.Normalize();
         if (pos == null)
         {
             currentObject.RBody.velocity = input * (rBody.velocity.magnitude);
