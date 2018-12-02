@@ -6,6 +6,7 @@ public class Global : MonoBehaviour
 {
     static Global Instance;
     public Sprite transparentImage;
+    public GameObject timerPrefab;
     protected virtual void Awake()
     {
         Instance = this;
@@ -57,12 +58,12 @@ public class Global : MonoBehaviour
         }
     }
 
-    public static Vector2 SampleParabolaDerivative2D(Vector3 start, Vector3 end, float height, float t,float delta)
+    public static Vector2 SampleParabolaDerivative2D(Vector3 start, Vector3 end, float height, float t, float delta)
     {
         if (t - delta < 0)
             return Vector2.zero;
         Vector3 v2 = SampleParabola(start, end, height, t);
-        Vector3 v1= SampleParabola(start, end, height, t-delta);
+        Vector3 v1 = SampleParabola(start, end, height, t - delta);
         return v2 - v1;
     }
     public static void RunCoroutine(IEnumerator routine)
@@ -70,11 +71,18 @@ public class Global : MonoBehaviour
         Instance.StartCoroutine(routine);
     }
 
-    
+    public static GameObject TimerPrefab
+    {
+        get
+        {
+            return Instance.timerPrefab;
+        }
+    }
+
 }
 public static class Vector2Extension
 {
-    public static Vector2 RotateDEG(this Vector2 input,float degrees)
+    public static Vector2 RotateDEG(this Vector2 input, float degrees)
     {
         return input.RotateRAD(degrees * Mathf.Deg2Rad);
     }
