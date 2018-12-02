@@ -69,6 +69,7 @@ public class PickupHandler : MonoBehaviour
     {
         currentObject = p;
         currentObject.rBody.isKinematic = true;
+        currentObject.col.enabled = false;
         currentObject.transform.parent = (heldLocation);
         currentObject.transform.position = heldLocation.position;
         currentObject.transform.localEulerAngles = Vector3.zero;
@@ -79,6 +80,7 @@ public class PickupHandler : MonoBehaviour
     {
         currentObject.transform.parent = (null);
         currentObject.rBody.isKinematic = false;
+        currentObject.col.enabled = true;
         if (pos == null)
         {
             currentObject.rBody.velocity = rBody.velocity / 1.5f;
