@@ -119,7 +119,9 @@ public class SpawnManager : MonoBehaviour {
             //newCustomerObj.transform.name = newCustomer.Behavior.GetType().ToString();
 
             int slot = _inventory.TakeChairSlot(newCustomerObj);
-            newCustomerObj.transform.position = customerSpawnLocations[slot].transform.position;
+            newCustomerObj.transform.position = customerSpawnLocations[slot].transform.position 
+                + (customerSpawnLocations[slot].transform.right*.5f)
+                + (customerSpawnLocations[slot].transform.up*.75f);
 
             Food selectedFood = FoodManager.GetRandomCustomerFood();
             newCustomer.SetDesiredFood(selectedFood,SpawnOrderBubble(selectedFood,newCustomerObj));

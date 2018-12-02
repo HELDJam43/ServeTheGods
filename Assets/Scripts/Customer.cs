@@ -21,7 +21,7 @@ public class Customer : MonoBehaviour {
         //// this is called every frame
         //// do move code here
 
-        if (wander && transform.position.y < 1) 
+       /* if (wander && transform.position.y < 1) 
         {
             transform.position += transform.TransformDirection(Vector3.forward) * Speed * Time.deltaTime;
             if ((transform.position - wayPoint).magnitude < 3)
@@ -30,7 +30,7 @@ public class Customer : MonoBehaviour {
                 // create a new way point target
                 Wander();
             }
-        }
+        }*/
 
     }
     private void OnCollisionEnter(Collision collision)
@@ -43,6 +43,8 @@ public class Customer : MonoBehaviour {
             Destroy(collision.gameObject);
             Wander();
             wander = true;
+            WaypointMovement wm = gameObject.AddComponent<WaypointMovement>();
+            wm.StartMoving(null, Global.EntranceWaypoint);
             SpawnManager.Instance.DespawnEvent.Invoke(gameObject);
         }
         else
@@ -99,13 +101,13 @@ public class Customer : MonoBehaviour {
 
     void Wander()
     {
-        // does nothing except pick a new destination to go to
+       /* // does nothing except pick a new destination to go to
 
         wayPoint = new Vector3(UnityEngine.Random.Range(transform.position.x - Range, transform.position.x + Range), 1, UnityEngine.Random.Range(transform.position.z - Range, transform.position.z + Range))
         {
             y = 0.29f
         };
         // don't need to change direction every frame seeing as you walk in a straight line only
-        transform.LookAt(wayPoint);
+        transform.LookAt(wayPoint);*/
     }
 }

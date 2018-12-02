@@ -7,6 +7,7 @@ public class Global : MonoBehaviour
     static Global Instance;
     public Sprite transparentImage;
     public GameObject timerPrefab;
+    public Waypoints.Waypoint entranceWaypoint;
     protected virtual void Awake()
     {
         Instance = this;
@@ -76,6 +77,13 @@ public class Global : MonoBehaviour
         get
         {
             return Instance.timerPrefab;
+        }
+    }
+    public static Waypoints.Waypoint EntranceWaypoint
+    {
+        get
+        {
+            return Instance.entranceWaypoint;
         }
     }
 
