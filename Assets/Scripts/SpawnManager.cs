@@ -155,18 +155,9 @@ public class SpawnManager : MonoBehaviour
             //newCustomerObj.transform.name = newCustomer.Behavior.GetType().ToString();
 
             int slot = _inventory.TakeChairSlot(newCustomerObj);
-            newCustomerObj.transform.position = customerSpawnLocations[slot].transform.position
-                - (customerSpawnLocations[slot].transform.forward * .5f)
-                + (customerSpawnLocations[slot].transform.right * .5f)
-                + (customerSpawnLocations[slot].transform.up * .75f);
-            newCustomerObj.transform.forward = -customerSpawnLocations[slot].transform.right;
-            Food selectedFood = FoodManager.GetRandomCustomerFood();
-            GameObject orderBub = SpawnOrderBubble(selectedFood, newCustomerObj);
-            orderBub.transform.localEulerAngles = new Vector3(0, 90, 0);
-            newCustomer.SetDesiredFood(selectedFood, orderBub);
+            newCustomer.WalkToInitialLocation(Waypoints.Waypoint.ClosestWaypointTo(customerSpawnLocations[slot].transform.position));
         }
     }
-
     private void SpawnCustomers()
     {
         if (_custermerSpawnWaiting) return;
@@ -223,7 +214,7 @@ public class SpawnManager : MonoBehaviour
         Invoke("SpawnInitialFood", _level._foodSpawnRate);
     }
 
-    private GameObject SpawnOrderBubble(Food selectedFood, GameObject obj)
+    public GameObject SpawnOrderBubble(Food selectedFood, GameObject obj)
     {
         GameObject newOrderBubble = Instantiate(_orderPrefab, obj.transform, false);
         newOrderBubble.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y + 1, obj.transform.position.z);

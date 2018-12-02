@@ -75,20 +75,52 @@ public class Customer : MonoBehaviour
     {
         if (wm == null)
             wm = gameObject.AddComponent<WaypointMovement>();
-        wm.StartMoving(null, Global.EntranceWaypoint, Despawn, null, 0.05f);
+        wm.StartMoving(null, Global.EntranceWaypoint, Despawn, OnLeave, 0.05f);
         state = AIState.LEAVING;
     }
     void OnScared()
     {
         if (wm == null)
             wm = gameObject.AddComponent<WaypointMovement>();
-        wm.StartMoving(null, Global.EntranceWaypoint, Despawn, null, 1);
+        wm.StartMoving(null, Global.EntranceWaypoint, Despawn, OnLeave, 1);
         state = AIState.SCARED;
     }
-    void Despawn()
+    void Despawn(Waypoints.Waypoint w)
     {
         SpawnManager.Instance.DespawnEvent.Invoke(gameObject);
     }
+
+    void OnLeave(Waypoints.Waypoint w)
+    {
+        Destroy(this.gameObject);
+    }
+    public void WalkToInitialLocation(Waypoints.Waypoint dest)
+    {
+        state = AIState.ARRIVING;
+        Vector3 offset = UnityEngine.Random.onUnitSphere * 4;
+        offset.y = 0;
+        transform.position = Global.Spawn.transform.position+offset;
+        if (wm == null)
+            wm = gameObject.AddComponent<WaypointMovement>();
+        wm.StartMoving(Global.EntranceWaypoint, dest, null, ReachDestination, 0);
+    }
+    void ReachDestination(Waypoints.Waypoint w)
+    {
+        wm.StopMoving(false);
+        state = AIState.WAITING;
+        Vector3 vec= w.transform.position
+                - (w.transform.forward * .375f)
+                - (w.transform.right * .375f);
+        vec.y = 0.5f;
+        transform.position = vec;
+
+        transform.forward = -w.transform.right;
+        Food selectedFood = FoodManager.GetRandomCustomerFood();
+        GameObject orderBub =SpawnManager.Instance.SpawnOrderBubble(selectedFood, gameObject);
+        orderBub.transform.localEulerAngles = new Vector3(0, 90, 0);
+        SetDesiredFood(selectedFood, orderBub);
+    }
+
     private CustomerBehavior _behavior;
 
     public void AssignRandomBehavior()

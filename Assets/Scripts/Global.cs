@@ -7,6 +7,7 @@ public class Global : MonoBehaviour
     static Global Instance;
     public Sprite transparentImage;
     public GameObject timerPrefab;
+    public GameObject spawn;
     public Waypoints.Waypoint entranceWaypoint;
     public Food ashes;
     protected virtual void Awake()
@@ -92,6 +93,14 @@ public class Global : MonoBehaviour
         get
         {
             return Instance.ashes;
+        }
+    }
+
+    public static GameObject Spawn
+    {
+        get
+        {
+            return Instance.gameObject;
         }
     }
 

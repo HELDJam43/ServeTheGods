@@ -9,8 +9,8 @@ public class WaypointMovement : MonoBehaviour
     bool updateMove;
     Rigidbody rBody;
     float speed = 2;
-    float closeEnough = .25f;
-    public delegate void WaypointEvent();
+    float closeEnough = .4f;
+    public delegate void WaypointEvent(Waypoint w);
     WaypointEvent onReachFirstWaypoint, onReachLastWaypoint;
     int size;
     bool wasKinematic = false;
@@ -75,9 +75,9 @@ public class WaypointMovement : MonoBehaviour
         Waypoint justReached = currentPath.Peek();
         currentPath.Pop();
         if (currentPath.Size == size - 1 && onReachFirstWaypoint != null)
-            onReachFirstWaypoint();
+            onReachFirstWaypoint(justReached);
         if (currentPath.IsEmpty() && onReachLastWaypoint != null)
-            onReachLastWaypoint();
+            onReachLastWaypoint(justReached);
 
     }
 }
