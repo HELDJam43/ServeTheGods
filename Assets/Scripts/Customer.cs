@@ -44,8 +44,7 @@ public class Customer : MonoBehaviour {
             Wander();
             wander = true;
             WaypointMovement wm = gameObject.AddComponent<WaypointMovement>();
-            wm.StartMoving(null, Global.EntranceWaypoint);
-            SpawnManager.Instance.DespawnEvent.Invoke(gameObject);
+            wm.StartMoving(null, Global.EntranceWaypoint, Despawn, null);
         }
         else
         {
@@ -55,7 +54,10 @@ public class Customer : MonoBehaviour {
             }
         }
     }
-
+    void Despawn()
+    {
+        SpawnManager.Instance.DespawnEvent.Invoke(gameObject);
+    }
     private CustomerBehavior _behavior;
 
     public void AssignRandomBehavior()

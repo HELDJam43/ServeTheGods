@@ -10,13 +10,19 @@ public class WaypointMovement : MonoBehaviour
     Rigidbody rBody;
     float speed = 2;
     float closeEnough = .25f;
-    public void StartMoving(Waypoint start, Waypoint end)
+    public delegate void WaypointEvent();
+    WaypointEvent onReachFirstWaypoint, onReachLastWaypoint;
+    int size;
+    public void StartMoving(Waypoint start, Waypoint end,WaypointEvent firstEvent,WaypointEvent lastEvent)
     {
         rBody = GetComponent<Rigidbody>();
         if (start == null)
             start = Waypoint.ClosestWaypointTo(transform.position);
         currentPath = Waypoint.CreatePath(start, end);
+        size = currentPath.Size;
         updateMove = true;
+        onReachFirstWaypoint = firstEvent;
+        onReachLastWaypoint = lastEvent;
     }
 
     public void StopMoving()
@@ -49,7 +55,10 @@ public class WaypointMovement : MonoBehaviour
     {
         Waypoint justReached = currentPath.Peek();
         currentPath.Pop();
-        if (justReached.waypointReachedEvent != null)
-            justReached.waypointReachedEvent();
+        if (currentPath.Size == size - 1 && onReachFirstWaypoint != null)
+            onReachFirstWaypoint();
+        if (currentPath.IsEmpty() && onReachLastWaypoint != null)
+            onReachLastWaypoint();
+
     }
 }

@@ -7,8 +7,6 @@ namespace Waypoints
     public class Waypoint : MonoBehaviour
     {
         public Waypoint[] adjacentWaypoints;
-        public delegate void OnWaypointReached();
-        public OnWaypointReached waypointReachedEvent;
         static List<Waypoint> allWaypoints=new List<Waypoint>();
 
         void Awake()
