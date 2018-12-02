@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     Rigidbody rBody;
-    float speed = 400;
+    public float speed = 400;
+    public float acceleration = 10;
     Vector3 input;
     public Animator animator;
     // Use this for initialization
@@ -30,17 +31,28 @@ public class PlayerController : MonoBehaviour
         {
             input.Normalize();
         }
-        if (input.magnitude > 0)
+        if (rBody.velocity.magnitude > 0)
         {
-            transform.forward = input;
+            transform.forward = rBody.velocity;
         }
-        animator.SetFloat("WalkSpeed", input.magnitude);
+        animator.SetFloat("WalkSpeed", Mathf.Abs(rBody.velocity.magnitude / speed));
     }
     void FixedUpdate()
     {
         //Vector3 targetPos = transform.position;
         //targetPos += (input * speed * Time.deltaTime);
         //rBody.MovePosition(targetPos);
-        rBody.velocity = input * speed * Time.fixedDeltaTime;
+        Vector3 targetSpeed = input * speed;
+        Vector3 moveToTargetSpeed = targetSpeed - rBody.velocity;
+        if(moveToTargetSpeed.magnitude <= acceleration * Time.deltaTime)
+        {
+            rBody.AddForce(moveToTargetSpeed, ForceMode.VelocityChange);
+        } else
+        {
+            rBody.AddForce(moveToTargetSpeed.normalized * acceleration, ForceMode.Acceleration);
+        }
+        
+
+        //rBody.velocity = input * speed * Time.fixedDeltaTime;
     }
 }
