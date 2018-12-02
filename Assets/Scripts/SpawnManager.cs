@@ -11,7 +11,8 @@ public class MyEmptyEvent : UnityEvent<GameObject>
 {
 }
 
-public class SpawnManager : MonoBehaviour {
+public class SpawnManager : MonoBehaviour
+{
 
     #region Prefab References
     //Customers
@@ -24,7 +25,7 @@ public class SpawnManager : MonoBehaviour {
     public GameObject[] foodSpawnLocations = { null, null, null };
     //Gods
     public GameObject _godsInHierarchy;
-    public GameObject[] _godPrefabs = { null, null, null, null, null};
+    public GameObject[] _godPrefabs = { null, null, null, null, null };
     public GameObject[] godSpawnLocations = { null, null, null };
     //Order Bubble
     public GameObject _orderPrefab;
@@ -37,7 +38,8 @@ public class SpawnManager : MonoBehaviour {
     public MyIntEvent DespawnEvent;
     public MyEmptyEvent ResetFoodEvent;
     // Use this for initialization
-    void Awake () {
+    void Awake()
+    {
         Instance = this;
         _inventory.SetChairSlotNum(customerSpawnLocations.Length);
         _inventory.SetFoodSlotNum(foodSpawnLocations.Length);
@@ -62,7 +64,8 @@ public class SpawnManager : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         SpawnInitialCustomers();
         SpawnInitialFood();
         SpawnInitialGods();
@@ -119,12 +122,15 @@ public class SpawnManager : MonoBehaviour {
             //newCustomerObj.transform.name = newCustomer.Behavior.GetType().ToString();
 
             int slot = _inventory.TakeChairSlot(newCustomerObj);
-            newCustomerObj.transform.position = customerSpawnLocations[slot].transform.position 
-                + (customerSpawnLocations[slot].transform.right*.5f)
-                + (customerSpawnLocations[slot].transform.up*.75f);
-
+            newCustomerObj.transform.position = customerSpawnLocations[slot].transform.position
+                - (customerSpawnLocations[slot].transform.forward * .5f)
+                + (customerSpawnLocations[slot].transform.right * .5f)
+                + (customerSpawnLocations[slot].transform.up * .75f);
+            newCustomerObj.transform.forward = -customerSpawnLocations[slot].transform.right;
             Food selectedFood = FoodManager.GetRandomCustomerFood();
-            newCustomer.SetDesiredFood(selectedFood,SpawnOrderBubble(selectedFood,newCustomerObj));
+            GameObject orderBub = SpawnOrderBubble(selectedFood, newCustomerObj);
+            orderBub.transform.localEulerAngles = new Vector3(0, 90, 0);
+            newCustomer.SetDesiredFood(selectedFood, orderBub);
         }
     }
 
@@ -138,12 +144,12 @@ public class SpawnManager : MonoBehaviour {
 
             int slot = _inventory.TakeGodChairSlot(newGodObj);
             newGodObj.transform.position = godSpawnLocations[slot].transform.position;
-            newGodObj.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+            //newGodObj.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
 
             Food selectedFood = FoodManager.GetRandomGodFood();
             GameObject orderBubble = SpawnOrderBubble(selectedFood, newGodObj);
             orderBubble.transform.position = new Vector3(orderBubble.transform.position.x + 0.5f, orderBubble.transform.position.y, orderBubble.transform.position.z - 0.7f);
-            newGod.SetDesiredFood(selectedFood,orderBubble);
+            newGod.SetDesiredFood(selectedFood, orderBubble);
         }
     }
 
@@ -159,13 +165,12 @@ public class SpawnManager : MonoBehaviour {
         }
     }
 
-    private GameObject SpawnOrderBubble(Food selectedFood,GameObject obj)
+    private GameObject SpawnOrderBubble(Food selectedFood, GameObject obj)
     {
         GameObject newOrderBubble = Instantiate(_orderPrefab, obj.transform, false);
         newOrderBubble.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y + 1, obj.transform.position.z);
-
         GameObject foodType = newOrderBubble.transform.Find("FoodType").gameObject;
-      
+
         foodType.GetComponentInChildren<MeshFilter>().sharedMesh = selectedFood.foodMesh;
         return newOrderBubble;
     }

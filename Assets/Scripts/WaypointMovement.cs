@@ -13,9 +13,12 @@ public class WaypointMovement : MonoBehaviour
     public delegate void WaypointEvent();
     WaypointEvent onReachFirstWaypoint, onReachLastWaypoint;
     int size;
+    bool wasKinematic = false;
     public void StartMoving(Waypoint start, Waypoint end,WaypointEvent firstEvent,WaypointEvent lastEvent)
     {
         rBody = GetComponent<Rigidbody>();
+        wasKinematic = rBody.isKinematic;
+        rBody.isKinematic = false;
         if (start == null)
             start = Waypoint.ClosestWaypointTo(transform.position);
         currentPath = Waypoint.CreatePath(start, end);
@@ -29,6 +32,7 @@ public class WaypointMovement : MonoBehaviour
     {
         updateMove = false;
         rBody.velocity = Vector3.zero;
+        rBody.isKinematic = wasKinematic;
     }
     void Update()
     {
