@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4636585382722108}
   - component: {fileID: 114298966196202202}
+  - component: {fileID: 114471552551791794}
   m_Layer: 0
   m_Name: Level Manager
   m_TagString: Untagged
@@ -53,3 +54,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hud: {fileID: 0}
   ui: {fileID: 0}
+--- !u!114 &114471552551791794
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1875831289905026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea81b29b9742889458499649bacf3ca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transparentImage: {fileID: 0}
+  timerPrefab: {fileID: 1176609387091884, guid: f1c52e9e07354914db4bc8c4be0a4670,
+    type: 2}
