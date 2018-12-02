@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3192f95f124ae4b488cb920938c57a22, type: 3}
+  m_Name: GrilledCheese
+  m_EditorClassIdentifier: 
+  foodName: GrilledCheese
+  foodPrefab: {fileID: 1288992473912014, guid: b0ffbbf7b6f134f4e98b268f3005eef6, type: 2}
+  foodMesh: {fileID: 4300000, guid: a6559fd8f331f624e8400ac331670c90, type: 3}
