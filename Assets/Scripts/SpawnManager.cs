@@ -33,6 +33,7 @@ public class SpawnManager : MonoBehaviour
 
     public int CustomerRespawnRate = 3;
     public int FoodRespawnRate = 2;
+    public int GodSpawnRate = 4;
 
     public static SpawnManager Instance;
     public MyIntEvent DespawnEvent;
@@ -58,6 +59,26 @@ public class SpawnManager : MonoBehaviour
         ResetFoodEvent.AddListener(ResetFood);
     }
 
+    public void Init(Level level)
+    {
+        _level = level;
+
+        for (int i = 0; i < level._customerInitialCount; i ++)
+        {
+            SpawnInitialCustomers();
+        }
+
+        for (int j = 0; j < level._foodInitialCount; j++)
+        {
+            SpawnInitialFood();
+        }
+
+        for (int k = 0; k < level._godInitialCount; k++)
+        {
+            SpawnInitialGods();
+        }
+    }
+
     void ScoreAdd(int num)
     {
         Debug.Log(num);
@@ -66,10 +87,6 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SpawnInitialCustomers();
-        SpawnInitialFood();
-        SpawnInitialGods();
-
         if (Input.GetKeyUp(KeyCode.R))
         {
             DespawnEverything();
@@ -78,6 +95,7 @@ public class SpawnManager : MonoBehaviour
 
     private SpawnInventory _inventory = new SpawnInventory();
     private Queue<GameObject> _slotsToFree = new Queue<GameObject>();
+    private Level _level;
 
     private void DespawnSomething(GameObject go)
     {

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4636585382722108}
   - component: {fileID: 114298966196202202}
   - component: {fileID: 114471552551791794}
+  - component: {fileID: 114531869896869878}
   m_Layer: 0
   m_Name: Level Manager
   m_TagString: Untagged
@@ -70,3 +71,25 @@ MonoBehaviour:
     type: 2}
   entranceWaypoint: {fileID: 0}
   ashes: {fileID: 11400000, guid: 2b1b7f9af385f0b438e3e8be69696c12, type: 2}
+--- !u!114 &114531869896869878
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1875831289905026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2644a35c3777472eb71320be9f9946a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _index: 0
+  _customerInitialCount: 1
+  _customerTotalCount: 0
+  _customerSpawnRate: 3
+  _godInitialCount: 0
+  _godTotalCount: 0
+  _godSpawnRate: 4
+  _foodInitialCount: 1
+  _foodTotalCount: 0
+  _footSpawnRate: 2
+  _scoreMultiplier: 1

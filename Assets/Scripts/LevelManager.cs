@@ -19,13 +19,17 @@ public class LevelManager : MonoBehaviour
     int reviewRank = (int)StarRank.TWO;
     public HUD hud;
     public GameOverUI ui;
+    Level level;
     void Awake()
     {
         Instance = this;
+        level = GetComponent<Level>();
+
     }
     // Use this for initialization
     void Start()
     {
+        SpawnManager.Instance.Init(level);
         Instance.hud.SetRageMeter(0);
         Instance.hud.SetReviewValue(Instance.CalcStars());
     }
