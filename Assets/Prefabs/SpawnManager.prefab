@@ -387,7 +387,6 @@ MonoBehaviour:
   - {fileID: 1183353628736842, guid: f2b161da83a4aa749b794931c07546d7, type: 2}
   - {fileID: 1022184793735252, guid: 9968bd171343ba742bab9d6b7b3580de, type: 2}
   - {fileID: 1441367189205574, guid: e06db1ec1488219478400e19394fa3c0, type: 2}
-  - {fileID: 1260015570022284, guid: 8528ee2e2a0270f4bb8b467a67363cde, type: 2}
   - {fileID: 1640349342202956, guid: 9480a9ea51a1e384f94327d38118d283, type: 2}
   foodSpawnLocations:
   - {fileID: 1229480914220970}

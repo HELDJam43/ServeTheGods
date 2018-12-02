@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4406569772339286}
   - component: {fileID: 33470948470814496}
   - component: {fileID: 23526384783283392}
-  - component: {fileID: 64925304683776294}
   - component: {fileID: 54625666648212342}
+  - component: {fileID: 135452333259256516}
   m_Layer: 0
   m_Name: god_goatmaster
   m_TagString: Untagged
@@ -100,8 +100,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &64925304683776294
-MeshCollider:
+--- !u!135 &135452333259256516
+SphereCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -109,8 +109,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 1a9209b208d93034194af0cf5490bcad, type: 3}
+  serializedVersion: 2
+  m_Radius: 2.5
+  m_Center: {x: 0.75, y: 0, z: 0}

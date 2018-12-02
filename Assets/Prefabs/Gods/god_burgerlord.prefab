@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4422016675733938}
   - component: {fileID: 33696569701743562}
   - component: {fileID: 23798405003445452}
-  - component: {fileID: 64968985101412380}
   - component: {fileID: 54354756787358126}
+  - component: {fileID: 135523182696744152}
   m_Layer: 0
   m_Name: god_burgerlord
   m_TagString: Untagged
@@ -100,8 +100,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &64968985101412380
-MeshCollider:
+--- !u!135 &135523182696744152
+SphereCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -109,8 +109,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 31c68ba2101c4664ba065fe29649524d, type: 3}
+  serializedVersion: 2
+  m_Radius: 2.5
+  m_Center: {x: 0.75, y: 0, z: 0}

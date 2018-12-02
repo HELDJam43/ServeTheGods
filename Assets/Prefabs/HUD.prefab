@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 114261794288074760}
   - component: {fileID: 114715612136834240}
   - component: {fileID: 114511218603047394}
-  - component: {fileID: 225953335910873918}
+  - component: {fileID: 225410560468099430}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -641,7 +641,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 250, y: 0}
+  m_SizeDelta: {x: 175, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!224 &224669541567724274
 RectTransform:
@@ -699,7 +699,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!225 &225953335910873918
+--- !u!225 &225410560468099430
 CanvasGroup:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}

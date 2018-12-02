@@ -4,29 +4,25 @@ using UnityEngine;
 
 public class FoodManager : MonoBehaviour
 {
-
-    List<Food> allFoods;
+    public List<FoodRecipes> recipes;
     public List<Food> customerFoods;
     public List<Food> godFoods;
     public static FoodManager Instance;
+    Dictionary<Food, List<FoodRecipes>> recipeDic;
     void Awake()
     {
-        allFoods = new List<Food>();
-        foreach (Food f in customerFoods)
-        {
-            allFoods.Add(f);
-        }
-        foreach (Food f in godFoods)
-        {
-            allFoods.Add(f);
-        }
         Instance = this;
+        recipeDic = new Dictionary<Food, List<FoodRecipes>>();
+        foreach (FoodRecipes foodRecipe in recipes)
+        {
+            if (!recipeDic.ContainsKey(foodRecipe.input))
+            {
+                recipeDic.Add(foodRecipe.input, new List<FoodRecipes>());
+            }
+            recipeDic[foodRecipe.input].Add(foodRecipe);
+        }
     }
 
-    public static Food GetRandomFood()
-    {
-        return Instance.allFoods[Random.Range(0, Instance.allFoods.Count)];
-    }
     public static Food GetRandomCustomerFood()
     {
         return Instance.customerFoods[Random.Range(0, Instance.customerFoods.Count)];
@@ -35,4 +31,26 @@ public class FoodManager : MonoBehaviour
     {
         return Instance.godFoods[Random.Range(0, Instance.godFoods.Count)];
     }
+    public static bool IsValidRecipe(Food i, FoodActions a)
+    {
+        if (!Instance.recipeDic.ContainsKey(i)) return false;
+        foreach (FoodRecipes recipe in Instance.recipeDic[i])
+        {
+            if (recipe.action == a)
+                return true;
+        }
+        return false;
+    }
+
+    public static FoodRecipes GetRecipe(Food i, FoodActions a)
+    {
+        if (!Instance.recipeDic.ContainsKey(i)) return null;
+        foreach (FoodRecipes recipe in Instance.recipeDic[i])
+        {
+            if (recipe.action == a)
+                return recipe;
+        }
+        return null;
+    }
+
 }

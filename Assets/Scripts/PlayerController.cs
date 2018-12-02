@@ -34,7 +34,8 @@ public class PlayerController : MonoBehaviour
             input.Normalize();
         }
         
-        animator.SetFloat("WalkSpeed", Mathf.Abs(rBody.velocity.magnitude / speed));
+        //animator.SetFloat("WalkSpeed", Mathf.Abs(rBody.velocity.magnitude / speed));
+        animator.SetFloat("WalkSpeed", Mathf.Abs(rBody.velocity.magnitude));
     }
     void FixedUpdate()
     {
@@ -55,10 +56,8 @@ public class PlayerController : MonoBehaviour
             transform.forward = input;
         }
 
-        //Vector3 targetPos = transform.position;
-        //targetPos += (input * speed * Time.deltaTime);
-        //rBody.MovePosition(targetPos);
-        Vector3 targetSpeed = input * speed;
+        
+        /*Vector3 targetSpeed = input * speed;
         Vector3 moveToTargetSpeed = targetSpeed - rBody.velocity;
         if(moveToTargetSpeed.magnitude <= acceleration * Time.deltaTime)
         {
@@ -66,9 +65,8 @@ public class PlayerController : MonoBehaviour
         } else
         {
             rBody.AddForce(moveToTargetSpeed.normalized * acceleration, ForceMode.Acceleration);
-        }
-        
+        }*/
 
-        //rBody.velocity = input * speed * Time.fixedDeltaTime;
+        rBody.velocity = input * speed * Time.fixedDeltaTime;
     }
 }

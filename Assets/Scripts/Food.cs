@@ -9,3 +9,11 @@ public class Food : ScriptableObject
     public GameObject foodPrefab;
     public Mesh foodMesh;
 }
+
+public enum FoodActions
+{
+    NONE,
+    CHOP,
+    COOK,
+    BOIL
+}

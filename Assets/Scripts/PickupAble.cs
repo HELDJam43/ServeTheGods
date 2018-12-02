@@ -5,14 +5,63 @@ using UnityEngine;
 public class PickupAble : MonoBehaviour
 {
     [HideInInspector]
-    public Rigidbody rBody;
+    private Rigidbody rBody;
 
     [HideInInspector]
-    public Collider col;
+    private Collider col;
+
+    [HideInInspector]
+    public SnapPoint sp = null;
+
+    public Rigidbody RBody
+    {
+        get
+        {
+            if (rBody == null)
+                RBody = GetComponent<Rigidbody>();
+            return rBody;
+        }
+
+        set
+        {
+            rBody = value;
+        }
+    }
+
+    public Collider Col
+    {
+        get
+        {
+            if (col == null)
+                Col = GetComponent<Collider>();
+            return col;
+        }
+
+        set
+        {
+            col = value;
+        }
+    }
+
     // Use this for initialization
     void Start()
     {
-        rBody = GetComponent<Rigidbody>();
-        col = GetComponent<Collider>();
+        RBody = GetComponent<Rigidbody>();
+        Col = GetComponent<Collider>();
     }
+    public void LockTo(Transform t)
+    {
+        RBody.isKinematic = true;
+        transform.parent = (t);
+        transform.position = t.position;
+        transform.localEulerAngles = Vector3.zero;
+
+    }
+    public void Release()
+    {
+        transform.parent = (null);
+        RBody.isKinematic = false;
+        transform.localScale = Vector3.one;
+    }
+
 }

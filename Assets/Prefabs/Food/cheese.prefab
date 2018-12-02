@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 64677744291836734}
   - component: {fileID: 54897143138147204}
   - component: {fileID: 114918717051008036}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: cheese
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,4 +127,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rBody: {fileID: 0}
+  col: {fileID: 0}
+  sp: {fileID: 0}
   food: {fileID: 11400000, guid: 92bf31fe68bfbbb489c0d9eb13b27761, type: 2}

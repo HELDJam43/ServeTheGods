@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 33114528328132246}
   - component: {fileID: 23195315692060228}
   - component: {fileID: 64801811445216782}
-  - component: {fileID: 114827869789399240}
   - component: {fileID: 54008678099319476}
-  m_Layer: 0
+  - component: {fileID: 114609359005491186}
+  m_Layer: 9
   m_Name: chickenman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 1df0dcc6b394b124d935d86cc8be51a1, type: 3}
---- !u!114 &114827869789399240
+--- !u!114 &114609359005491186
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,7 +123,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1266723178929520}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5a3aed3af6cebe4b9abe89c1c56a667, type: 3}
+  m_Script: {fileID: 11500000, guid: c4e2537d909dbee49b3f492ce784dcb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rBody: {fileID: 0}
+  col: {fileID: 0}
+  sp: {fileID: 0}
+  food: {fileID: 11400000, guid: 2747b7dea4e833646a42fddc9fa8209d, type: 2}

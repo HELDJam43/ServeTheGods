@@ -68,25 +68,36 @@ public class PickupHandler : MonoBehaviour
     void PickUp(PickupAble p)
     {
         currentObject = p;
-        currentObject.rBody.isKinematic = true;
-        currentObject.col.enabled = false;
-        currentObject.transform.parent = (heldLocation);
-        currentObject.transform.position = heldLocation.position;
-        currentObject.transform.localEulerAngles = Vector3.zero;
+        if (currentObject.sp)
+            currentObject.sp.OnPickedUp();
+        currentObject.Col.enabled = false;
+        currentObject.LockTo(heldLocation);
 
         SpawnManager.Instance.DespawnEvent.Invoke(currentObject.gameObject);
     }
     void Drop(Transform pos)
     {
-        currentObject.transform.parent = (null);
-        currentObject.rBody.isKinematic = false;
-        currentObject.col.enabled = true;
+        currentObject.Col.enabled = true;
+        currentObject.Release();        
+        Vector3 camRight = Camera.main.transform.right * ActionSystem.GetActionAxis(ActionSystem.MOVEAXIS_X);
+        camRight.y = 0;
+        Vector3 camForward = Camera.main.transform.up * ActionSystem.GetActionAxis(ActionSystem.MOVEAXIS_Y);
+        camForward.y = 0;
+        Vector3 input = (camRight + camForward);
+        if (input.magnitude > 1)
+        {
+            input.Normalize();
+        }
+        if (input.magnitude <= 0.1f)
+        {
+            input = transform.forward;
+        }
         if (pos == null)
         {
-            currentObject.rBody.velocity = rBody.velocity / 1.5f;
-            currentObject.rBody.AddForce(transform.forward * throwForce);
+            currentObject.RBody.velocity = input * (rBody.velocity.magnitude);
+            currentObject.RBody.AddForce(input * throwForce);
         }
-        currentObject.transform.localScale = Vector3.one;
+
         currentObject = null;
     }
     void OnDrawGizmosSelected()
