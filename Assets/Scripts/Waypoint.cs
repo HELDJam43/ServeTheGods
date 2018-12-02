@@ -124,7 +124,7 @@ namespace Waypoints
                 float result = 0;
                 for (int i = 0; i < waypoints.Count - 1; i++)
                 {
-                    result += Mathf.Abs(waypoints[i].transform.position.x - waypoints[i + 1].transform.position.x);
+                    result += Vector3.Distance(waypoints[i].transform.position , waypoints[i + 1].transform.position);
                 }
                 return result;
             }
