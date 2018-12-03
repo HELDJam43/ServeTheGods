@@ -9,6 +9,10 @@ public class PickupHandler : MonoBehaviour
     float throwForce = 250;
     float pickRadius = .75f;
     Rigidbody rBody;
+
+    public AudioSource throwSound;
+    public AudioSource pickupSound;
+
     public Transform PickupLocation
     {
         get
@@ -74,6 +78,8 @@ public class PickupHandler : MonoBehaviour
         currentObject.LockTo(heldLocation);
 
         SpawnManager.Instance.DespawnEvent.Invoke(currentObject.gameObject);
+
+        pickupSound.Play();
     }
     void Drop(Transform pos)
     {
@@ -96,6 +102,8 @@ public class PickupHandler : MonoBehaviour
             currentObject.RBody.velocity = input * (rBody.velocity.magnitude);
             currentObject.RBody.AddForce(input * throwForce);
         }
+
+        throwSound.Play();
 
         currentObject = null;
     }

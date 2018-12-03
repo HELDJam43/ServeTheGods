@@ -11,21 +11,44 @@ public class CuttingBoard : MonoBehaviour {
 
     Animator animator;
 
+    AudioSource sound;
+
+    float soundFalloff = 0;
+    static float SOUNDTIME = 3;
+    float repeatTimer = 0;
+    static float REPEATSPEED = .14f;
+
+    static float[] PENTATONIC = { 1, 9 / 8f, 5 / 4f, 3 / 2f, 5 / 3f, 2 };
+
 	// Use this for initialization
 	void Start () {
         animator = GetComponent<Animator>();
+        sound = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(activated)
         {
+            soundFalloff += Time.deltaTime;
+            repeatTimer -= Time.deltaTime;
+            if (repeatTimer <= 0)
+                repeatTimer = REPEATSPEED;
+
             activeRamp += ACTIVESPEED * Time.deltaTime;
         } else
         {
+            soundFalloff = 0;
             activeRamp -= ACTIVESPEED * Time.deltaTime;
         }
         activeRamp = Mathf.Clamp01(activeRamp);
+
+        if (soundFalloff > 0 && soundFalloff < SOUNDTIME && repeatTimer == REPEATSPEED)
+        {
+            sound.volume = Mathf.Pow((1 - (soundFalloff / SOUNDTIME)), 2);
+            sound.pitch = PENTATONIC[Random.Range(0, PENTATONIC.Length)];
+            sound.Play();
+        }
 
         animator.SetFloat("Chopping", activeRamp);
 	}
