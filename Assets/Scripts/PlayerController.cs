@@ -15,6 +15,12 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rBody = GetComponent<Rigidbody>();
+        if (Global.LevelOneWASD)
+        {
+            Global.LevelOneWASD = false;
+            TutorialText tt = Instantiate(Global.TutorialPrefab).GetComponent<TutorialText>();
+            tt.Show("USE WASD or Arrow Keys to move", 3, transform.position, 2);
+        }
     }
 
     // Update is called once per frame

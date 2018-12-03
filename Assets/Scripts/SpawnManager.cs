@@ -202,6 +202,13 @@ public class SpawnManager : MonoBehaviour
             GameObject orderBubble = SpawnOrderBubble(selectedFood, newGodObj);
             orderBubble.transform.position = new Vector3(orderBubble.transform.position.x + 0.5f, orderBubble.transform.position.y, orderBubble.transform.position.z - 0.7f);
             newGod.SetDesiredFood(selectedFood, orderBubble);
+
+            if (Global.FirstGodSpawn)
+            {
+                Global.FirstGodSpawn = false;
+                TutorialText tt = Instantiate(Global.TutorialPrefab).GetComponent<TutorialText>();
+                tt.Show("Serve the GODS to avoid their divine wraith", 5, customerSpawnLocations[3].transform.position, 2);
+            }
         }
     }
 
@@ -223,6 +230,12 @@ public class SpawnManager : MonoBehaviour
 
             int slot = _inventory.TakeFoodSlot(newFoodObj);
             newFoodObj.transform.position = foodSpawnLocations[slot].transform.position;
+            if (Global.FirstFoodSpawn)
+            {
+                Global.FirstFoodSpawn = false;
+                TutorialText tt = Instantiate(Global.TutorialPrefab).GetComponent<TutorialText>();
+                tt.Show("Click SPACE or LMB to pick up and throw food or ingredients", 7, newFoodObj.transform.position, -.5f, 4);
+            }
         }
     }
 

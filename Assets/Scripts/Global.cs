@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Global : MonoBehaviour
 {
+    public static bool FirstFoodSpawn = true;
+    public static bool FirstCustomerSit = true;
+    public static bool FirstGodSpawn = true;
+    public static bool LevelOneWASD = true;
     static Global Instance;
     public Sprite transparentImage;
     public GameObject timerPrefab;
+    public GameObject tutorialPrefab;
     public GameObject spawn;
     public Waypoints.Waypoint entranceWaypoint;
     public Food ashes;
@@ -81,6 +86,16 @@ public class Global : MonoBehaviour
             return Instance.timerPrefab;
         }
     }
+
+    public static GameObject TutorialPrefab
+    {
+        get
+        {
+            return Instance.tutorialPrefab;
+        }
+    }
+
+
     public static Waypoints.Waypoint EntranceWaypoint
     {
         get
