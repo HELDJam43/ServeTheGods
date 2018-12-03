@@ -166,6 +166,12 @@ public class Customer : MonoBehaviour
         GameObject orderBub = SpawnManager.Instance.SpawnOrderBubble(selectedFood, gameObject);
         orderBub.transform.localEulerAngles = new Vector3(0, 90, 0);
         SetDesiredFood(selectedFood, orderBub);
+        if (Global.FirstCustomerSit)
+        {
+            Global.FirstCustomerSit = false;
+            TutorialText tt = Instantiate(Global.TutorialPrefab).GetComponent<TutorialText>();
+            tt.Show("Serve food to customers to increase your restuarants rating.\n Reach 5 stars to complete the level", 5, transform.position, 1.5f, 7);
+        }
     }
 
     private CustomerBehavior _behavior;

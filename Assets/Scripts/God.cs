@@ -36,7 +36,7 @@ public class God : MonoBehaviour
     {
         GameObject obj = Instantiate(Global.TimerPrefab, gameObject.transform);
         DesireTimer = obj.GetComponent<Timer>();
-        DesireTimer.StartTimer(UnityEngine.Random.Range(50, 100), transform, 2.7f, HandleOnTimerComplete);
+        DesireTimer.StartTimer(UnityEngine.Random.Range(20, 50), transform, 2.7f, HandleOnTimerComplete);
     }
 
     private void OnCollisionEnter(Collision collision)

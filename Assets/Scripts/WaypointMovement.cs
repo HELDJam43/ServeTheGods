@@ -60,6 +60,7 @@ public class WaypointMovement : MonoBehaviour
         Waypoint target = currentPath.Peek();
         Vector3 direction = -transform.position + target.transform.position;
         direction.y = 0;
+        transform.forward = direction;
         //direction.Normalize();
         if (direction.magnitude < closeEnough)
             HandleReachedWaypoint();
