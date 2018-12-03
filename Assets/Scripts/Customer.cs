@@ -17,6 +17,13 @@ public class Customer : MonoBehaviour
 
     string eatenFood = "hungry";
 
+    ParticleSystem particles;
+    AudioSource sound;
+    float soundFade = 0;
+    float soundRepeat = 0;
+    float SOUNDTIME = 4f;
+    static float[] PENTATONIC = { 1, 9 / 8f, 5 / 4f, 3 / 2f, 5 / 3f, 2 };
+
     public enum AIState
     {
         WAITING,
@@ -26,6 +33,13 @@ public class Customer : MonoBehaviour
         HELD,
         ARRIVING,
         WANDER
+    }
+
+    private void Start()
+    {
+        particles = GetComponent<ParticleSystem>();
+        particles.Stop();
+        sound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -51,6 +65,28 @@ public class Customer : MonoBehaviour
             OnScared();
         }
 
+        if(state == AIState.EATING)
+        {
+            if(soundRepeat <= 0)
+            {
+                sound.pitch = PENTATONIC[UnityEngine.Random.Range(0, PENTATONIC.Length)];
+                sound.volume = 1 - (soundFade / SOUNDTIME);
+                sound.Play();
+                soundRepeat += UnityEngine.Random.Range(.3f, .6f);
+            }
+            soundRepeat -= Time.deltaTime;
+            soundFade += Time.deltaTime;
+            if(!particles.isPlaying)
+            {
+                particles.Play();
+            }
+        } else
+        {
+            if (particles.isPlaying)
+                particles.Stop();
+
+            soundFade = 0;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
