@@ -5,8 +5,16 @@ using TMPro;
 
 public class TutorialText : MonoBehaviour
 {
+    public bool playOnStart;
     TextMeshPro text;
-
+    void Start()
+    {
+        if(playOnStart)
+        {
+            Destroy(gameObject, 6);
+            gameObject.SetActive(true);
+        }
+    }
     public TextMeshPro Text
     {
         get
