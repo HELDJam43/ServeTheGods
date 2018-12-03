@@ -37,27 +37,7 @@ public class LevelManager : MonoBehaviour
         Instance.hud.SetReviewValue(Instance.CalcStars());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            GodOrderFailed();
-        }
-        else if (Input.GetKeyDown(KeyCode.E))
-        {
-            GodOrderDelivered();
-        }
 
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            CustomerOrderFailed();
-        }
-        else if (Input.GetKeyDown(KeyCode.X))
-        {
-            CustomerOrderDelivered();
-        }
-    }
     public void Lose()
     {
         GameStateManager.SetState(GameStateManager.GameState.GAMEOVER);
@@ -71,6 +51,7 @@ public class LevelManager : MonoBehaviour
     public static void GodOrderFailed()
     {
         if (GameStateManager.State == GameStateManager.GameState.GAMEOVER) return;
+        if (GameStateManager.State == GameStateManager.GameState.NEXTLEVEL) return;
         Instance.currentGodRage += 20;
         Instance.hud.SetRageMeter(Instance.currentGodRage / Instance.maxGodRage);
         if (Instance.currentGodRage >= Instance.maxGodRage)
@@ -82,6 +63,7 @@ public class LevelManager : MonoBehaviour
     public static void GodOrderDelivered()
     {
         if (GameStateManager.State == GameStateManager.GameState.GAMEOVER) return;
+        if (GameStateManager.State == GameStateManager.GameState.NEXTLEVEL) return;
         Instance.currentGodRage -= 10;
         if (Instance.currentGodRage < 0)
             Instance.currentGodRage = 0;
@@ -92,6 +74,7 @@ public class LevelManager : MonoBehaviour
     {
 
         if (GameStateManager.State == GameStateManager.GameState.GAMEOVER) return;
+        if (GameStateManager.State == GameStateManager.GameState.NEXTLEVEL) return;
         Instance.reviewRank -= 20;
         if (Instance.reviewRank < 50)
         {
@@ -103,6 +86,7 @@ public class LevelManager : MonoBehaviour
     public static void CustomerOrderDelivered()
     {
         if (GameStateManager.State == GameStateManager.GameState.GAMEOVER) return;
+        if (GameStateManager.State == GameStateManager.GameState.NEXTLEVEL) return;
         Instance.reviewRank += Instance.level._scoreAdditive;
         Instance.hud.SetReviewValue(Instance.CalcStars());
 
@@ -183,7 +167,6 @@ public class LevelManager : MonoBehaviour
             c.alpha = Mathf.Lerp(0, 1, t / duration);
             t += Time.deltaTime;
             yield return null;
-            GameObject.Destroy(nextLevelui);
         }
     }
 }

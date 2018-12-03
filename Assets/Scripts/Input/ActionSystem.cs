@@ -161,7 +161,9 @@ public static class ActionSystem
         MENUDPADUP="dpadUP",
         MENUDPADDOWN="dpadDOWN",
         MENUDPADLEFT="dpadLEFT",
-        MENUDPADRIGHT="dpadRIGHT"
+        MENUDPADRIGHT="dpadRIGHT",
+        RETRY="retry",
+        NEXT="next"
         ;
 }
 class InputAction

@@ -11,6 +11,9 @@ public class GameOverUI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (ActionSystem.OnActionDown(ActionSystem.RETRY))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+        }
 	}
 }

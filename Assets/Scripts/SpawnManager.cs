@@ -96,10 +96,6 @@ public class SpawnManager : MonoBehaviour
         SpawnFood();
         SpawnGod();
 
-        if (Input.GetKeyUp(KeyCode.R))
-        {
-            DespawnEverything();
-        }
     }
 
     private SpawnInventory _inventory = new SpawnInventory();
