@@ -9790,7 +9790,7 @@ Prefab:
     - target: {fileID: 114531869896869878, guid: 8ec47eb3311bd7046934bf5b2d16e155,
         type: 2}
       propertyPath: _foodTotalCount
-      value: 9
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 114531869896869878, guid: 8ec47eb3311bd7046934bf5b2d16e155,
         type: 2}

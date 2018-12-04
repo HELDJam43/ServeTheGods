@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        GameStateManager.SetState(GameStateManager.GameState.GAMEPLAY);
         rBody = GetComponent<Rigidbody>();
         if (Global.LevelOneWASD)
         {
