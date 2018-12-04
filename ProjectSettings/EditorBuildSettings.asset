@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Game.unity
-    guid: c7dd618d2391ccb408451a99aa05c68f
+    path: Assets/Scenes/JeromeLevels/level_1.unity
+    guid: 8ece0d528c2faf747bbfea35a4e7f3c2
+  - enabled: 1
+    path: Assets/Scenes/JeromeLevels/level_2.unity
+    guid: 52760c1e56925b94b8b54c73e509fdbc
+  - enabled: 1
+    path: Assets/Scenes/JeromeLevels/level_3.unity
+    guid: 62623c0e739906747b2aa48cfd68200e
+  - enabled: 1
+    path: Assets/Scenes/JeromeLevels/level_4.unity
+    guid: 12eacffe135b096409e6f9386d603c75
+  - enabled: 1
+    path: Assets/Scenes/JeromeLevels/level_5.unity
+    guid: 46420827dade0ad4593dfe0d0b71a04a
   m_configObjects: {}

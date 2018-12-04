@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 54403944410387444}
   - component: {fileID: 135382856145890860}
   - component: {fileID: 65570061607662450}
+  - component: {fileID: 135748156650820142}
   m_Layer: 0
   m_Name: god_eye
   m_TagString: Untagged
@@ -120,8 +121,20 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1803644093437350}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 2.3
   m_Center: {x: 0.75, y: 0, z: 0}
+--- !u!135 &135748156650820142
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1803644093437350}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.3
+  m_Center: {x: -0.75, y: 0, z: 0}

@@ -24,7 +24,13 @@ public class CuttingBoard : MonoBehaviour {
 	void Start () {
         animator = GetComponent<Animator>();
         sound = GetComponent<AudioSource>();
-	}
+        if (Global.FirstCuttingBoard)
+        {
+            Global.FirstCuttingBoard = false;
+            TutorialText tt = Instantiate(Global.TutorialPrefab).GetComponent<TutorialText>();
+            tt.Show("Use Appliances to create new foods", 3, transform.position, 1);
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {

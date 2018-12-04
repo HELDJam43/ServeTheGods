@@ -36,7 +36,7 @@ public class God : MonoBehaviour
     {
         GameObject obj = Instantiate(Global.TimerPrefab, gameObject.transform);
         DesireTimer = obj.GetComponent<Timer>();
-        DesireTimer.StartTimer(UnityEngine.Random.Range(20, 50), transform, 2.7f, HandleOnTimerComplete);
+        DesireTimer.StartTimer(UnityEngine.Random.Range(15, 30) * (DesiredFood != null && DesiredFood.IsRecipe ? 2f : 1), transform, 2.7f, HandleOnTimerComplete);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -56,7 +56,7 @@ public class God : MonoBehaviour
         GameObject obj = Instantiate(Global.TimerPrefab);
         eatingTimer = obj.GetComponent<Timer>();
         Destroy(DesireTimer.gameObject);
-        eatingTimer.StartTimer(UnityEngine.Random.Range(10, 30), transform, 2.7f, OnFinisheEating);
+        eatingTimer.StartTimer(UnityEngine.Random.Range(10, 30), transform, 2.7f, OnFinisheEating, Color.green);
     }
     void OnFinisheEating()
     {
@@ -70,7 +70,7 @@ public class God : MonoBehaviour
 
     public void ResetDesiredFood()
     {
-        
+
         MakeTimer();
         SpawnManager.Instance.ResetFoodEvent.Invoke(gameObject);
     }

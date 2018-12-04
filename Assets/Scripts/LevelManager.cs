@@ -32,7 +32,7 @@ public class LevelManager : MonoBehaviour
     {
         SpawnManager.Instance.Init(level);
         currentGodRage = level._startingGodRageLevel;
-        Instance.hud.SetRageMeter(currentGodRage/maxGodRage);
+        Instance.hud.SetRageMeter(currentGodRage / maxGodRage);
         Instance.reviewRank = (int)level._startingStarLevel;
         Instance.hud.SetReviewValue(Instance.CalcStars());
     }
@@ -52,7 +52,7 @@ public class LevelManager : MonoBehaviour
     {
         if (GameStateManager.State == GameStateManager.GameState.GAMEOVER) return;
         if (GameStateManager.State == GameStateManager.GameState.NEXTLEVEL) return;
-        Instance.currentGodRage += 20;
+        Instance.currentGodRage += 50 / (Instance.level._godInitialCount);
         Instance.hud.SetRageMeter(Instance.currentGodRage / Instance.maxGodRage);
         if (Instance.currentGodRage >= Instance.maxGodRage)
         {
@@ -64,7 +64,7 @@ public class LevelManager : MonoBehaviour
     {
         if (GameStateManager.State == GameStateManager.GameState.GAMEOVER) return;
         if (GameStateManager.State == GameStateManager.GameState.NEXTLEVEL) return;
-        Instance.currentGodRage -= 10;
+        Instance.currentGodRage -= 20;
         if (Instance.currentGodRage < 0)
             Instance.currentGodRage = 0;
         Instance.hud.SetRageMeter(Instance.currentGodRage / Instance.maxGodRage);

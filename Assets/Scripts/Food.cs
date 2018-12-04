@@ -9,6 +9,7 @@ public class Food : ScriptableObject
     public GameObject foodPrefab;
     public Mesh foodMesh;
     public string[] friendlyNames;
+    public bool IsRecipe;
 }
 
 public enum FoodActions

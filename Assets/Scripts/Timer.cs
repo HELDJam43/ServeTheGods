@@ -25,7 +25,15 @@ public class Timer : MonoBehaviour
         co = StartCoroutine(UpdateTimer());
         completeEvent = e;
     }
-
+    public void StartTimer(float dur, Transform target, float offset, OnTimerComplete e,Color c)
+    {
+        ui.color = c;
+        targetPos = target;
+        yOffset = offset;
+        duration = dur;
+        co = StartCoroutine(UpdateTimer());
+        completeEvent = e;
+    }
     void Update()
     {
         if (targetPos)
