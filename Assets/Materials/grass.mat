@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Proto_drywall
+  m_Name: grass
   m_Shader: {fileID: 4800000, guid: d51b0e4a87ac4a7ba04281341fc2ceef, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -47,7 +47,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 720f4f346e1b94a48aef9bc9dc549779, type: 3}
+        m_Texture: {fileID: 2800000, guid: d76e44500f12ed249978608603d256c3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -101,7 +101,7 @@ Material:
     - _Wavelength: 0.17857142
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.8921836, g: 0.9150943, b: 0.8503471, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color1: {r: 0.67910445, g: 0.67910445, b: 0.67910445, a: 1}
     - _Color2: {r: 0.14179105, g: 0.14179105, b: 0.14179105, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
