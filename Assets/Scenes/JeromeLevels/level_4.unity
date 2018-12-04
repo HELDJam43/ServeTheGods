@@ -9754,6 +9754,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 24
       objectReference: {fileID: 0}
+    - target: {fileID: 114471552551791794, guid: 8ec47eb3311bd7046934bf5b2d16e155,
+        type: 2}
+      propertyPath: entranceWaypoint
+      value: 
+      objectReference: {fileID: 866881094}
     - target: {fileID: 114298966196202202, guid: 8ec47eb3311bd7046934bf5b2d16e155,
         type: 2}
       propertyPath: hud
@@ -9769,61 +9774,20 @@ Prefab:
       propertyPath: nextLevelui
       value: 
       objectReference: {fileID: 291275514}
-    - target: {fileID: 114471552551791794, guid: 8ec47eb3311bd7046934bf5b2d16e155,
-        type: 2}
-      propertyPath: entranceWaypoint
-      value: 
-      objectReference: {fileID: 866881094}
-    - target: {fileID: 114531869896869878, guid: 8ec47eb3311bd7046934bf5b2d16e155,
-        type: 2}
-      propertyPath: _customerInitialCount
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 114531869896869878, guid: 8ec47eb3311bd7046934bf5b2d16e155,
         type: 2}
       propertyPath: _customerTotalCount
       value: 1000
       objectReference: {fileID: 0}
-    - target: {fileID: 114471552551791794, guid: 8ec47eb3311bd7046934bf5b2d16e155,
+    - target: {fileID: 114531869896869878, guid: 8ec47eb3311bd7046934bf5b2d16e155,
         type: 2}
-      propertyPath: tutorialPrefab
-      value: 
-      objectReference: {fileID: 1473668116356338, guid: 7f0cdaea4857e5e49b50546c540dbff2,
-        type: 2}
+      propertyPath: _foodTotalCount
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 114531869896869878, guid: 8ec47eb3311bd7046934bf5b2d16e155,
         type: 2}
       propertyPath: _godInitialCount
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114531869896869878, guid: 8ec47eb3311bd7046934bf5b2d16e155,
-        type: 2}
-      propertyPath: _godTotalCount
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114531869896869878, guid: 8ec47eb3311bd7046934bf5b2d16e155,
-        type: 2}
-      propertyPath: _foodInitialCount
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114531869896869878, guid: 8ec47eb3311bd7046934bf5b2d16e155,
-        type: 2}
-      propertyPath: _foodTotalCount
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 114531869896869878, guid: 8ec47eb3311bd7046934bf5b2d16e155,
-        type: 2}
-      propertyPath: _startingGodRageLevel
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114531869896869878, guid: 8ec47eb3311bd7046934bf5b2d16e155,
-        type: 2}
-      propertyPath: _scoreAdditive
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 114531869896869878, guid: 8ec47eb3311bd7046934bf5b2d16e155,
-        type: 2}
-      propertyPath: _customerSpawnRate
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ec47eb3311bd7046934bf5b2d16e155, type: 2}

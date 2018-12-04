@@ -9573,7 +9573,7 @@ Prefab:
     - target: {fileID: 114531869896869878, guid: 8ec47eb3311bd7046934bf5b2d16e155,
         type: 2}
       propertyPath: _customerTotalCount
-      value: 10
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 114471552551791794, guid: 8ec47eb3311bd7046934bf5b2d16e155,
         type: 2}
@@ -9599,11 +9599,16 @@ Prefab:
     - target: {fileID: 114531869896869878, guid: 8ec47eb3311bd7046934bf5b2d16e155,
         type: 2}
       propertyPath: _foodTotalCount
-      value: 9
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 114531869896869878, guid: 8ec47eb3311bd7046934bf5b2d16e155,
         type: 2}
       propertyPath: _startingGodRageLevel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114531869896869878, guid: 8ec47eb3311bd7046934bf5b2d16e155,
+        type: 2}
+      propertyPath: _scoreAdditive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
