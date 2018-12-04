@@ -8,6 +8,8 @@ public class Global : MonoBehaviour
     public static bool FirstCustomerSit = true;
     public static bool FirstGodSpawn = true;
     public static bool LevelOneWASD = true;
+    public static bool FirstPAN = true;
+    public static bool FirstCuttingBoard = true;
     static Global Instance;
     public Sprite transparentImage;
     public GameObject timerPrefab;

@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 54701448016555094}
   - component: {fileID: 135287128386921396}
   - component: {fileID: 65129714340025126}
+  - component: {fileID: 135549366031595292}
   m_Layer: 0
   m_Name: god_witch
   m_TagString: Untagged
@@ -120,8 +121,20 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1197134748912696}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 2.3
   m_Center: {x: 0.75, y: 0, z: 0}
+--- !u!135 &135549366031595292
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1197134748912696}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.3
+  m_Center: {x: -0.75, y: 0, z: 0}

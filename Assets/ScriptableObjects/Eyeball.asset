@@ -16,3 +16,4 @@ MonoBehaviour:
   foodMesh: {fileID: 4300000, guid: 152f684af09a5e1499a6bafb002177a4, type: 3}
   friendlyNames:
   - eyeball
+  IsRecipe: 1

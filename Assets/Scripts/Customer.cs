@@ -108,7 +108,7 @@ public class Customer : MonoBehaviour
         LevelManager.CustomerOrderDelivered();
         GameObject obj = Instantiate(Global.TimerPrefab);
         eatingTimer = obj.GetComponent<Timer>();
-        eatingTimer.StartTimer(15, transform, 2, OnFinisheEating);
+        eatingTimer.StartTimer(15, transform, 2, OnFinisheEating,Color.green);
 
     }
     void OnFinisheEating()
@@ -116,6 +116,7 @@ public class Customer : MonoBehaviour
         if (wm == null)
             wm = gameObject.AddComponent<WaypointMovement>();
         wm.StartMoving(null, Global.EntranceWaypoint, Despawn, OnLeave, 0.05f);
+        wm.rBody.mass = 1.5f;
         state = AIState.LEAVING;
         PostManager.INSTANCE.MakePost(PostRandomizer.RatingType.Fed, eatenFood);
     }
@@ -124,6 +125,7 @@ public class Customer : MonoBehaviour
         if (wm == null)
             wm = gameObject.AddComponent<WaypointMovement>();
         wm.StartMoving(null, Global.EntranceWaypoint, Despawn, OnLeave, 1);
+        wm.rBody.mass = 1.5f;
         state = AIState.SCARED;
     }
     void Despawn(Waypoints.Waypoint w)
@@ -162,7 +164,7 @@ public class Customer : MonoBehaviour
         transform.position = vec;
 
         transform.forward = -w.transform.right;
-        Food selectedFood = FoodManager.GetRandomCustomerFood();
+        Food selectedFood = FoodManager.GetRandomCustomerFood(false);
         GameObject orderBub = SpawnManager.Instance.SpawnOrderBubble(selectedFood, gameObject);
         orderBub.transform.localEulerAngles = new Vector3(0, 90, 0);
         SetDesiredFood(selectedFood, orderBub);

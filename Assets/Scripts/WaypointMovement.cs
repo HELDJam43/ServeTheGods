@@ -7,7 +7,7 @@ public class WaypointMovement : MonoBehaviour
 
     Path currentPath;
     bool updateMove;
-    Rigidbody rBody;
+    public Rigidbody rBody;
     float speed = 2;
     float closeEnough = .4f;
     public delegate void WaypointEvent(Waypoint w);

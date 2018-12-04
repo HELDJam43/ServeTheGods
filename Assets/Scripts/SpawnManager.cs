@@ -17,11 +17,11 @@ public class SpawnManager : MonoBehaviour
     #region Prefab References
     //Customers
     public GameObject _customersInHierarchy;
-    public GameObject[] _customerPrefabs = { null, null, null, null };
+    //public GameObject[] _customerPrefabs = { null, null, null, null };
     public GameObject[] customerSpawnLocations = { null, null, null, null };
     //Food
     public GameObject _foodInHierarchy;
-    public GameObject[] _foodPrefabs = { null, null, null, null, null, null };
+    //public GameObject[] _foodPrefabs = { null, null, null, null, null, null };
     public GameObject[] foodSpawnLocations = { null, null, null };
     //Gods
     public GameObject _godsInHierarchy;
@@ -144,7 +144,7 @@ public class SpawnManager : MonoBehaviour
         if (_inventory.ChairSlotOpen() && _currentCustomerCount < _level._customerTotalCount)
         {
             _currentCustomerCount++;
-            GameObject newCustomerObj = Instantiate(_customerPrefabs[UnityEngine.Random.Range(0, _customerPrefabs.Length)]);
+            GameObject newCustomerObj = Instantiate(FoodManager.GetRandomGodFood(true).foodPrefab);
             Customer newCustomer = newCustomerObj.AddComponent<Customer>();
             newCustomer.AssignRandomBehavior();
             newCustomerObj.transform.parent = _customersInHierarchy.transform;
@@ -162,7 +162,7 @@ public class SpawnManager : MonoBehaviour
         if (_inventory.ChairSlotOpen() && _currentCustomerCount < _level._customerTotalCount)
         {
             _currentCustomerCount++;
-            GameObject newCustomerObj = Instantiate(_customerPrefabs[UnityEngine.Random.Range(0, _customerPrefabs.Length)]);
+            GameObject newCustomerObj = Instantiate(FoodManager.GetRandomGodFood(true).foodPrefab);
             Customer newCustomer = newCustomerObj.AddComponent<Customer>();
             newCustomer.AssignRandomBehavior();
             newCustomerObj.transform.parent = _customersInHierarchy.transform;
@@ -194,7 +194,7 @@ public class SpawnManager : MonoBehaviour
             newGodObj.transform.position = godSpawnLocations[slot].transform.position;
             //newGodObj.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
 
-            Food selectedFood = FoodManager.GetRandomGodFood();
+            Food selectedFood = FoodManager.GetRandomGodFood(false);
             GameObject orderBubble = SpawnOrderBubble(selectedFood, newGodObj);
             orderBubble.transform.position = new Vector3(orderBubble.transform.position.x + 0.5f, orderBubble.transform.position.y, orderBubble.transform.position.z - 0.7f);
             newGod.SetDesiredFood(selectedFood, orderBubble);
@@ -221,7 +221,7 @@ public class SpawnManager : MonoBehaviour
         if (_inventory.FoodSlotOpen() && _currentFoodCount < _level._foodTotalCount)
         {
             _currentFoodCount++;
-            GameObject newFoodObj = Instantiate(_foodPrefabs[UnityEngine.Random.Range(0, _foodPrefabs.Length)]);
+            GameObject newFoodObj = Instantiate(FoodManager.GetRandomCustomerFood(true).foodPrefab);
             newFoodObj.transform.parent = _foodInHierarchy.transform;
 
             int slot = _inventory.TakeFoodSlot(newFoodObj);
@@ -255,7 +255,7 @@ public class SpawnManager : MonoBehaviour
     private void ResetFood(GameObject go)
     {
         God script = go.GetComponent<God>();
-        Food selectedFood = FoodManager.GetRandomGodFood();
+        Food selectedFood = FoodManager.GetRandomGodFood(false);
         GameObject orderBubble = SpawnOrderBubble(selectedFood, go);
         orderBubble.transform.position = new Vector3(orderBubble.transform.position.x + 0.5f, orderBubble.transform.position.y, orderBubble.transform.position.z - 0.7f);
         script.SetDesiredFood(selectedFood, orderBubble);

@@ -18,7 +18,13 @@ public class Pan : MonoBehaviour {
 	void Start () {
         animator = GetComponent<Animator>();
         sound = GetComponent<AudioSource>();
-	}
+        if (Global.FirstPAN)
+        {
+            Global.FirstPAN = false;
+            TutorialText tt = Instantiate(Global.TutorialPrefab).GetComponent<TutorialText>();
+            tt.Show("Use Appliances to create new foods", 3, transform.position, 2);
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
